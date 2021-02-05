@@ -2,7 +2,7 @@
 
 Music player
 
-##Authors
+## Authors
 * Mattias
 * Hanna
 * Nawzad
