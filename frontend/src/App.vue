@@ -1,75 +1,71 @@
 <template>
-  <div class="main-grid">
-    <Playlists class="playlists" user="User"/>
-    <PlaylistHeader class="playlist-header" playlistName="My Playlist"/>
-    <PlaylistContent class="playlist-content"/>
-    <Timeline class="timeline"/>
-  </div>
+    <div class="main">
+        <div class="left">
+            <Playlists class="playlists" user="User" />
+        </div>
+        <div class="right">
+            <PlaylistHeader
+                class="playlist-header"
+                playlistName="My Playlist"
+            />
+            <PlaylistContent class="playlist-content" />
+            <Timeline class="timeline" />
+        </div>
+    </div>
 </template>
 
 <script>
-import Playlists from './components/Playlists.vue'
-import PlaylistHeader from './components/PlaylistHeader.vue'
-import PlaylistContent from './components/PlaylistContent.vue'
-import Timeline from './components/Timeline.vue'
+import Playlists from "./components/Playlists.vue";
+import PlaylistHeader from "./components/PlaylistHeader.vue";
+import PlaylistContent from "./components/PlaylistContent.vue";
+import Timeline from "./components/Timeline.vue";
 
 export default {
-  name: 'App',
-  components: {
-    Playlists,
-    PlaylistHeader,
-    PlaylistContent,
-    Timeline
-  }
-}
+    name: "App",
+    components: {
+        Playlists,
+        PlaylistHeader,
+        PlaylistContent,
+        Timeline,
+    },
+};
 </script>
 
 <style scoped>
+.main {
+    display: flex;
+    flex-direction: row;
+}
 
-.main-grid {
-  display: grid;
-  grid-template-areas:
-    "playlists  playlist-header playlist-header playlist-header playlist-header playlist-header playlist-header playlist-header playlist-header"
-    "playlists  playlist-header playlist-header playlist-header playlist-header playlist-header playlist-header playlist-header playlist-header"
-    "playlists  playlist-header playlist-header playlist-header playlist-header playlist-header playlist-header playlist-header playlist-header"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content playlist-content"
-    "playlists  timeline timeline timeline timeline timeline timeline timeline timeline"
-    ;
+.left {
+  display: flex;
+  flex-direction: column;
+  width: 15vw;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  width: 85vw;
 }
 
 .playlists {
-  grid-area: playlists;
-  border: 1px solid black;
+    border: 1px solid black;
+    height: 100vh;
 }
 
 .playlist-header {
-  grid-area: playlist-header;
-  border: 1px solid black;
+    border: 1px solid black;
+    height: 15vh;
 }
 
 .playlist-content {
-  grid-area: playlist-content;
-  border: 1px solid black;
+    border: 1px solid black;
+    height: 70vh;
 }
 
 .timeline {
-  grid-area: timeline;
-  border: 1px solid black;
+    border: 1px solid black;
+    height: 15vh;
 }
 </style>
