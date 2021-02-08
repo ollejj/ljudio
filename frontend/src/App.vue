@@ -19,6 +19,7 @@ import Playlists from "./components/Playlists.vue";
 import PlaylistHeader from "./components/PlaylistHeader.vue";
 import PlaylistContent from "./components/PlaylistContent.vue";
 import Timeline from "./components/Timeline.vue";
+import SongItem from "./components/SongItem";
 
 export default {
     name: "App",
@@ -27,6 +28,7 @@ export default {
         PlaylistHeader,
         PlaylistContent,
         Timeline,
+        SongItem,
     },
 };
 </script>
