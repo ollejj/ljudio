@@ -9,6 +9,7 @@
                 playlistName="My Playlist"
             />
             <PlaylistContent class="playlist-content" />
+            <SongItem class="songitem" />
             <Timeline class="timeline" />
         </div>
     </div>
@@ -19,6 +20,7 @@ import Playlists from "./components/Playlists.vue";
 import PlaylistHeader from "./components/PlaylistHeader.vue";
 import PlaylistContent from "./components/PlaylistContent.vue";
 import Timeline from "./components/Timeline.vue";
+import SongItem from "./components/SongItem.vue";
 
 export default {
     name: "App",
@@ -27,6 +29,7 @@ export default {
         PlaylistHeader,
         PlaylistContent,
         Timeline,
+        SongItem,
     },
 };
 </script>
@@ -68,5 +71,9 @@ export default {
 .timeline {
     border: 1px solid black;
     height: 15vh;
+}
+.songitem {
+    border: 1px solid black;
+    height: 55vh;
 }
 </style>
