@@ -2,12 +2,16 @@
   <div>
     <h1>YoutubePlayer</h1>
   </div>
-  
 </template>
 
 <script>
-export default {};
+export default {
+  name: "SongItem",
+  data() {
+    return;
+  },
+};
 </script>
 
-<style>
+<style scoped>
 </style>
