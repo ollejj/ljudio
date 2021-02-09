@@ -1,17 +1,15 @@
 <template>
-    <div class="main">
-        <div class="left">
-            <Playlists class="playlists" user="User" />
-        </div>
-        <div class="right">
-            <PlaylistHeader
-                class="playlist-header"
-                playlistName="My Playlist"
-            />
-            <PlaylistContent class="playlist-content" />
-            <Timeline class="timeline" />
-        </div>
+  <div class="main">
+    <div class="left">
+      <Playlists class="playlists" user="User" />
     </div>
+    <div class="right">
+      <PlaylistHeader class="playlist-header" playlistName="My Playlist" />
+      <PlaylistContent class="playlist-content" />
+      <SongItem class="songitem" />
+      <Timeline class="timeline" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -19,22 +17,24 @@ import Playlists from "./components/Playlists.vue";
 import PlaylistHeader from "./components/PlaylistHeader.vue";
 import PlaylistContent from "./components/PlaylistContent.vue";
 import Timeline from "./components/Timeline.vue";
+import SongItem from "./components/SongItem.vue";
 
 export default {
-    name: "App",
-    components: {
-        Playlists,
-        PlaylistHeader,
-        PlaylistContent,
-        Timeline,
-    },
+  name: "App",
+  components: {
+    Playlists,
+    PlaylistHeader,
+    PlaylistContent,
+    Timeline,
+    SongItem,
+  },
 };
 </script>
 
 <style scoped>
 .main {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .left {
@@ -50,22 +50,26 @@ export default {
 }
 
 .playlists {
-    border: 1px solid black;
-    height: 100vh;
+  border: 1px solid black;
+  height: 100vh;
 }
 
 .playlist-header {
-    border: 1px solid black;
-    height: 15vh;
+  border: 1px solid black;
+  height: 15vh;
 }
 
 .playlist-content {
-    border: 1px solid black;
-    height: 70vh;
+  border: 1px solid black;
+  height: 15vh;
 }
 
 .timeline {
-    border: 1px solid black;
-    height: 15vh;
+  border: 1px solid black;
+  height: 15vh;
+}
+.songitem {
+  border: 1px solid black;
+  height: 55vh;
 }
 </style>

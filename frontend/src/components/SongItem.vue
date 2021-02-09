@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h1>Timeline and songcontrolls</h1>
+    <h1>Player</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Timeline",
+  name: "SongItem",
   data() {
-    return {};
+    return{};
   },
 };
 </script>
