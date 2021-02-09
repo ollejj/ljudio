@@ -38,15 +38,15 @@ export default {
 }
 
 .left {
-  display: flex;
-  flex-direction: column;
-  width: 15vw;
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
 }
 
 .right {
-  display: flex;
-  flex-direction: column;
-  width: 85vw;
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
 }
 
 .playlists {
@@ -62,6 +62,7 @@ export default {
 .playlist-content {
     border: 1px solid black;
     height: 70vh;
+    overflow: auto;
 }
 
 .timeline {

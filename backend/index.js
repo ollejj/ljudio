@@ -1,5 +1,5 @@
 // server port
-const port = 3000
+const port = 3001
 
 // express server
 const express = require('express')
@@ -50,7 +50,7 @@ const path = require('path')
 app.use(express.static(path.join(__dirname, '../example-client')))
 
 // start the server
-app.listen(3000, async () => {
+app.listen(port, async () => {
     await db.connect()
-    console.log('server running on port 3000')
+    console.log(`server running on port ${port}`)
 })
