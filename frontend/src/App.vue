@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="left">
-      <Playlists class="playlists" user="User" />
+      <Playlists class="playlists" />
     </div>
     <div class="right">
       <PlaylistHeader class="playlist-header" playlistName="My Playlist" />
