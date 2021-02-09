@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>YoutubePlayer</h1>
+    <h1>Player</h1>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: "SongItem",
   data() {
-    return;
+    return{};
   },
 };
 </script>
