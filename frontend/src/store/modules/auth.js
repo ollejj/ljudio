@@ -30,7 +30,15 @@ const actions = {
   },
 };
 
-const mutations = {};
+const mutations = {
+  setUser(state, email) {
+    state.user = email;
+  },
+
+  logOut(state) {
+    state.user = null;
+  },
+};
 
 export default {
   state,
