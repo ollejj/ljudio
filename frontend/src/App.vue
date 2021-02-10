@@ -1,5 +1,6 @@
 <template>
     <div class="main">
+        <NavBar />
         <div class="left">
             <Playlists class="playlists" user="User" />
         </div>
@@ -21,10 +22,12 @@ import PlaylistHeader from "./components/PlaylistHeader.vue";
 import PlaylistContent from "./components/PlaylistContent.vue";
 import Timeline from "./components/Timeline.vue";
 import SongItem from "./components/SongItem.vue";
+import NavBar from "./components/NavBar.vue";
 
 export default {
     name: "App",
     components: {
+        NavBar,
         Playlists,
         PlaylistHeader,
         PlaylistContent,

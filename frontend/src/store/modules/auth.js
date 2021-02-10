@@ -19,7 +19,7 @@ const actions = {
         await dispatch() */
   },
 
-  async LogIn({ commit }, user) {
+  async logIn({ commit }, user) {
     await fetch("/api/login", {
       method: "POST",
       body: JSON.stringify(user),
@@ -27,7 +27,7 @@ const actions = {
       await commit("setUser", User.get("email"));
   },
 
-  async LogOut({ commit }) {
+  async logOut({ commit }) {
     let user = null;
     commit("logout", user);
   },
