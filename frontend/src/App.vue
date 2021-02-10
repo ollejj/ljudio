@@ -2,6 +2,7 @@
     <div class="main">
         <div class="left">
             <Playlists class="playlists" user="User" />
+            <SearchField />
         </div>
         <div class="right">
             <PlaylistHeader
@@ -21,16 +22,18 @@ import PlaylistHeader from "./components/PlaylistHeader.vue";
 import PlaylistContent from "./components/PlaylistContent.vue";
 import Timeline from "./components/Timeline.vue";
 import SongItem from "./components/SongItem.vue";
+import SearchField from "./components/SearchField.vue"
 
 export default {
-    name: "App",
-    components: {
-        Playlists,
-        PlaylistHeader,
-        PlaylistContent,
-        Timeline,
-        SongItem,
-    },
+  name: "App",
+  components: {
+    Playlists,
+    PlaylistHeader,
+    PlaylistContent,
+    Timeline,
+    SongItem,
+    SearchField
+  },
 };
 </script>
 
