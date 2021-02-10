@@ -5,3 +5,4 @@ dist-ssr
 *.local
 
 index.js
+vite.config.js
