@@ -21,11 +21,13 @@ import PlaylistContent from "./components/PlaylistContent.vue";
 import Timeline from "./components/Timeline.vue";
 import SongItem from "./components/SongItem.vue";
 import NavBar from "./components/NavBar.vue";
+import Login from "./components/Login.vue";
 
 export default {
   name: "App",
   components: {
     NavBar,
+    Login,
     Playlists,
     PlaylistHeader,
     PlaylistContent,
