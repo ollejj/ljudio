@@ -1,5 +1,5 @@
 // server port
-const port = 3001
+const port = 3000
 
 // express server
 const express = require('express')
@@ -32,8 +32,8 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
-    password: '',
-    database: ''
+    password: 'password',
+    database: 'nodemusic'
 });
 // vi gör om mysql-metoderna connect och query till promise-metoder så att vi kan använda async/await för att vänta på databasen
 const util = require('util')
