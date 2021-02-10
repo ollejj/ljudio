@@ -2,7 +2,10 @@ const state = {
   user: null,
 };
 
-const getters = {};
+const getters = {
+    isAuthenticated: state => !!state.user,
+    StateUser: state => !!state.User
+};
 
 const actions = {
   async Register({ dispatch }, form) {
