@@ -50,7 +50,10 @@ module.exports = (app, db) => {
             response.json({ loggedIn: false })
         })
     })
-
+    app.get('/api/playlist', async (request, response) => {
+        let data = await db.query('SELECT * FROM playlist')
+        response.json(data)
+    })
 
     // Example routes
 
