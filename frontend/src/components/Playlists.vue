@@ -1,30 +1,26 @@
 <template>
   <div>
     <h1>Playlists</h1>
-    {{ playlistid }}
+    {{ playlist }}
   </div>
 </template>
 
 <script>
 export default {
   name: "Playlists",
+
   data() {
     return {
-      playlistid: "",
+      playlist: String,
+      arrPlaylist: [],
     };
   },
+
   async created() {
     const res = await fetch("/api/playlist");
     const data = await res.json();
-    this.playlistid = data;
-    
-    
-    const arrPlaylist = [];
-    for (let key in data.res) {
-      arrPlaylist.push(data.res[key]);
-    }
-    console.log(data);
-    console.log(arrPlaylist);
+    this.playlist = data;
+    arrPlaylist.push(data);
   },
 };
 </script>
