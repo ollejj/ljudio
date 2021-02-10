@@ -12,7 +12,7 @@ const actions = {
     await fetch("api/users", {
       method: "POST",
       body: JSON.stringify(form),
-    });
+    }).then(console.log(response));
     /*    let userForm = formData()
         userForm.append(email, form.email)
         userForm.append(password, form.password)
