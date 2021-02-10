@@ -1,6 +1,8 @@
 <template>
   <div class="main">
     <div class="left">
+      <h1>Testtext</h1>
+      <SearchField />
       <Playlists class="playlists" user="User" />
     </div>
     <div class="right">
@@ -18,6 +20,7 @@ import PlaylistHeader from "./components/PlaylistHeader.vue";
 import PlaylistContent from "./components/PlaylistContent.vue";
 import Timeline from "./components/Timeline.vue";
 import SongItem from "./components/SongItem.vue";
+import SearchField from "./components/SearchField.vue"
 
 export default {
   name: "App",
@@ -27,6 +30,7 @@ export default {
     PlaylistContent,
     Timeline,
     SongItem,
+    SearchField
   },
 };
 </script>
