@@ -1,15 +1,18 @@
 <template>
-  <div class="main">
-    <div class="left">
-      <Playlists class="playlists" user="User" />
+    <div class="main">
+        <div class="left">
+            <Playlists class="playlists" user="User" />
+        </div>
+        <div class="right">
+            <PlaylistHeader
+                class="playlist-header"
+                playlistName="My Playlist"
+            />
+            <PlaylistContent class="playlist-content" />
+            <SongItem class="songitem" />
+            <Timeline class="timeline" />
+        </div>
     </div>
-    <div class="right">
-      <PlaylistHeader class="playlist-header" playlistName="My Playlist" />
-      <PlaylistContent class="playlist-content" />
-      <SongItem class="songitem" />
-      <Timeline class="timeline" />
-    </div>
-  </div>
 </template>
 
 <script>
@@ -20,56 +23,57 @@ import Timeline from "./components/Timeline.vue";
 import SongItem from "./components/SongItem.vue";
 
 export default {
-  name: "App",
-  components: {
-    Playlists,
-    PlaylistHeader,
-    PlaylistContent,
-    Timeline,
-    SongItem,
-  },
+    name: "App",
+    components: {
+        Playlists,
+        PlaylistHeader,
+        PlaylistContent,
+        Timeline,
+        SongItem,
+    },
 };
 </script>
 
 <style scoped>
 .main {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .left {
-  display: flex;
-  flex-direction: column;
-  width: 15vw;
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
 }
 
 .right {
-  display: flex;
-  flex-direction: column;
-  width: 85vw;
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
 }
 
 .playlists {
-  border: 1px solid black;
-  height: 100vh;
+    border: 1px solid black;
+    height: 100vh;
 }
 
 .playlist-header {
-  border: 1px solid black;
-  height: 15vh;
+    border: 1px solid black;
+    height: 15vh;
 }
 
 .playlist-content {
-  border: 1px solid black;
-  height: 15vh;
+    border: 1px solid black;
+    height: 70vh;
+    overflow: auto;
 }
 
 .timeline {
-  border: 1px solid black;
-  height: 15vh;
+    border: 1px solid black;
+    height: 15vh;
 }
 .songitem {
-  border: 1px solid black;
-  height: 55vh;
+    border: 1px solid black;
+    height: 55vh;
 }
 </style>
