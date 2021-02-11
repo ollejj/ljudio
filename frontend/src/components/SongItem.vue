@@ -1,5 +1,5 @@
 <template>
-    <div v-on:click="playSong(id)">
+    <div v-on:dblclick="playSong(id)">
         <p>{{ songName }}</p>
         <p>{{ songArtist }}</p>
         <p>{{ songDuration }}</p>
