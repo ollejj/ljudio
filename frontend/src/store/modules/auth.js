@@ -1,30 +1,38 @@
+import axios from "axios";
+
 const state = {
   user: null,
 };
 
 const getters = {
-    isAuthenticated: state => !!state.user,
-    StateUser: state => !!state.User
+  isAuthenticated: (state) => !!state.user,
+  StateUser: (state) => !!state.User,
 };
 
 const actions = {
   async Register({ dispatch }, form) {
-    await fetch("api/users", {
-      method: "POST",
-      body: JSON.stringify(form),
-    }).then(console.log(response));
-    /*    let userForm = formData()
-        userForm.append(email, form.email)
-        userForm.append(password, form.password)
-        await dispatch() */
+    await axios
+      .post("http://localhost:3000/api/users", form)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 
-  async logIn({ commit }, user) {
+  async LogIn({ commit }, user) {
     await fetch("/api/login", {
       method: "POST",
       body: JSON.stringify(user),
-    }),
-      await commit("setUser", User.get("email"));
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    //await commit("setUser", user.get("email")).catch(error => {console.log(error)});
   },
 
   async logOut({ commit }) {

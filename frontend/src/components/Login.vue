@@ -10,6 +10,7 @@
           <label for="password">Password</label>
           <input type="text" name="password" v-model="form.password" />
         </div>
+        <button type="submit">Login</button>
       </form>
       <p v-if="showError" id="error">Username or Password is incorrect</p>
     </div>
@@ -19,30 +20,30 @@
 <script>
 import { mapActions } from "vuex";
 export default {
-    name: "Login",
-    components : {},
-    data() {
-        return {
-            form: {
-                email: "",
-                password: ""
-            },
-            showError: false
-        }
-    },
-    methods: {
-    ...mapActions(["logIn"]),   
+  name: "Login",
+  components: {},
+  data() {
+    return {
+      form: {
+        email: "",
+        password: "",
+      },
+      showError: false,
+    };
+  },
+  methods: {
+    ...mapActions(["LogIn"]),
     async submit() {
-        const user = new FormData();
-        user.append("email", this.form.username);
-        user.append("password", this.form.password);
-        try{
-            await this.logIn(user);
-            this.$router.push("/");
-            this.showError = false
-        } catch (error) {
-            this.showError = true
-     }
+      const user = new FormData();
+      user.append("email", this.form.username);
+      user.append("password", this.form.password);
+      try {
+        await this.logIn(user);
+        this.$router.push("/");
+        this.showError = false;
+      } catch (error) {
+        this.showError = true;
+      }
     },
   },
 };

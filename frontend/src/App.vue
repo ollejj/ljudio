@@ -1,5 +1,7 @@
 <template>
     <div class="main">
+        <router-view/>
+        <NavBar />
         <div class="left">
             <Playlists class="playlists" user="User" />
             <SearchField />
@@ -22,7 +24,10 @@ import PlaylistHeader from "./components/PlaylistHeader.vue";
 import PlaylistContent from "./components/PlaylistContent.vue";
 import Timeline from "./components/Timeline.vue";
 import SongItem from "./components/SongItem.vue";
-import SearchField from "./components/SearchField.vue"
+import SearchField from "./components/SearchField.vue";
+import Register from "./components/Register.vue";
+import NavBar from "./components/NavBar.vue";
+import Login from "./components/Login.vue";
 
 export default {
   name: "App",
@@ -32,7 +37,10 @@ export default {
     PlaylistContent,
     Timeline,
     SongItem,
-    SearchField
+    SearchField,
+    Register,
+    NavBar,
+    Login
   },
 };
 </script>
