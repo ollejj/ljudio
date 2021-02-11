@@ -5,35 +5,48 @@
             <input v-model="inputText" type="text" placeholder="Search string for song/artist" />
             <button>Search</button>
         </form>
+        <SearchList v-bind:songList="songList"/>
     </div>
 </template>
 
 <script>
+import SearchList from "./SearchList.vue"
 
 export default {
     name: 'SearchField',
+    components: {
+        SearchList
+    },
     data () {
         return {
             inputText: '',
             songList: []
         }
     },
-    async created() {
+    /*async created() {
         /*let searchString = 'music'
         let res = await fetch('/api/yt/songs/' + searchString)
         let songs = await res.json()
         
-        console.log(songs)*/
-    },
+        console.log(songs)
+    },*/
     methods: {
         async searchSong() {
-            /*let res = fetch('/api/yt/songs/' + this.inputText)
-            this.songList = await res.json()
-            console.log(songList)*/
-            fetch(/*'/api/yt/songs/' + this.inputText*/'https://jsonplaceholder.typicode.com/todos/1').then(res => {
-            let response = res.json();
-            console.log(response)}).catch(err => console.log(err))
-            }
+            let promise = await fetch(
+                '/api/yt/songs/' + this.inputText
+            )
+            promise.json().then((data) => {
+                var i;
+                for (i = 0; i < data.content.length; i++) {
+                    this.songList.push({songTitle: data.content[i].name, 
+                                        artistName: data.content[i].artist.name,
+                                        videoId: data.content[i].videoId,
+                                        songLength:data.content[i].duration})
+                }
+            })
+            .catch((err) => console.log(err));
+            console.log(this.songList)
+        }
     }
 
 }
