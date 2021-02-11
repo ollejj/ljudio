@@ -10,7 +10,6 @@
                 playlistName="My Playlist"
             />
             <PlaylistContent class="playlist-content" />
-            <SongItem class="songitem" />
             <Timeline class="timeline" />
         </div>
     </div>
@@ -21,7 +20,6 @@ import Playlists from "./components/Playlists.vue";
 import PlaylistHeader from "./components/PlaylistHeader.vue";
 import PlaylistContent from "./components/PlaylistContent.vue";
 import Timeline from "./components/Timeline.vue";
-import SongItem from "./components/SongItem.vue";
 import SearchField from "./components/SearchField.vue"
 
 export default {
@@ -31,7 +29,6 @@ export default {
     PlaylistHeader,
     PlaylistContent,
     Timeline,
-    SongItem,
     SearchField
   },
 };
