@@ -51,6 +51,7 @@ REPLACE INTO `example_colors` (`id`, `value`) VALUES
 
 CREATE TABLE IF NOT EXISTS `playlist` (
   `playlistid` int NOT NULL AUTO_INCREMENT,
+  `playlistname` varchar(50) NOT NULL,
   `songid` varchar(50) NOT NULL,
   `title` varchar(50) DEFAULT NULL,
   `artist` varchar(50) DEFAULT NULL,
