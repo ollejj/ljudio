@@ -2,7 +2,11 @@
     <div>
         <h1>Search Field</h1>
         <form @submit.prevent="searchSong">
-            <input v-model="inputText" type="text" placeholder="Search string for song/artist" />
+            <input
+                v-model="inputText"
+                type="text"
+                placeholder="Search string for song/artist"
+            />
             <button>Search</button>
         </form>
         <SearchList v-bind:songList="songList"/>
@@ -19,9 +23,9 @@ export default {
     },
     data () {
         return {
-            inputText: '',
-            songList: []
-        }
+            inputText: "",
+            songList: [],
+        };
     },
     /*async created() {
         /*let searchString = 'music'
@@ -52,6 +56,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
