@@ -41,9 +41,10 @@ export default {
       showError: false,
     };
   },
-  metods: {
+  methods: {
     ...mapActions(["Register"]),
     async submit() {
+      console.log(this.form)
       try {
         await this.Register(this.form);
         this.$router.push("/");
