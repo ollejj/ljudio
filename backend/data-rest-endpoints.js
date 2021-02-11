@@ -50,7 +50,16 @@ module.exports = (app, db) => {
             response.json({ loggedIn: false })
         })
     })
+    app.get('/api/playlist', async (request, response) => {
+        let data = await db.query('SELECT * FROM playlist')
+        response.json(data)
+    })
 
+    // Get all Playlists for user
+    app.get('/api/playlists/:id', async (request, response) => {
+        let data = await db.query('select * from userplaylist where id = ?', request.params.id)
+        response.json(data);
+    })
 
     // Example routes
 

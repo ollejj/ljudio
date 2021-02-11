@@ -1,17 +1,19 @@
 <template>
-  <div class="main">
-    <NavBar />
-    <router-view />
-    <div class="left">
-      <Playlists class="playlists" user="User" />
+    <div class="main">
+        <div class="left">
+            <Playlists class="playlists" user="User" />
+            <SearchField />
+        </div>
+        <div class="right">
+            <PlaylistHeader
+                class="playlist-header"
+                playlistName="My Playlist"
+            />
+            <PlaylistContent class="playlist-content" />
+            <SongItem class="songitem" />
+            <Timeline class="timeline" />
+        </div>
     </div>
-    <div class="right">
-      <PlaylistHeader class="playlist-header" playlistName="My Playlist" />
-      <PlaylistContent class="playlist-content" />
-      <SongItem class="songitem" />
-      <Timeline class="timeline" />
-    </div>
-  </div>
 </template>
 
 <script>
@@ -20,19 +22,17 @@ import PlaylistHeader from "./components/PlaylistHeader.vue";
 import PlaylistContent from "./components/PlaylistContent.vue";
 import Timeline from "./components/Timeline.vue";
 import SongItem from "./components/SongItem.vue";
-import NavBar from "./components/NavBar.vue";
-import Login from "./components/Login.vue";
+import SearchField from "./components/SearchField.vue"
 
 export default {
   name: "App",
   components: {
-    NavBar,
-    Login,
     Playlists,
     PlaylistHeader,
     PlaylistContent,
     Timeline,
     SongItem,
+    SearchField
   },
 };
 </script>
