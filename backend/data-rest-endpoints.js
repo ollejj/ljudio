@@ -11,6 +11,7 @@ module.exports = (app, db) => {
         let result = await db.query("INSERT INTO users SET ?", { ...request.body, password })
         response.json(result)
     });
+    
 
     // authentication: perform login
     app.post('/api/login', async (request, response) => {
