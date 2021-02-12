@@ -12,7 +12,6 @@
                 playlistName="My Playlist"
             />
             <PlaylistContent class="playlist-content" />
-            <SongItem class="songitem" />
             <Timeline class="timeline" />
         </div>
     </div>
@@ -23,11 +22,7 @@ import Playlists from "./components/Playlists.vue";
 import PlaylistHeader from "./components/PlaylistHeader.vue";
 import PlaylistContent from "./components/PlaylistContent.vue";
 import Timeline from "./components/Timeline.vue";
-import SongItem from "./components/SongItem.vue";
-import SearchField from "./components/SearchField.vue";
-import Register from "./components/Register.vue";
-import NavBar from "./components/NavBar.vue";
-import Login from "./components/Login.vue";
+import SearchField from "./components/SearchField.vue"
 
 export default {
   name: "App",
@@ -36,11 +31,7 @@ export default {
     PlaylistHeader,
     PlaylistContent,
     Timeline,
-    SongItem,
-    SearchField,
-    Register,
-    NavBar,
-    Login
+    SearchField
   },
 };
 </script>
