@@ -5,7 +5,7 @@ const state = {
 };
 
 const getters = {
-  isAuthenticated: (state) => !!state.user,
+  isAuthenticated: (state) => !!state.user || localStorage['user'],
   StateUser: (state) => !!state.User,
 };
 
@@ -27,7 +27,7 @@ const actions = {
       .then((response) => {
         console.log(response);
         state.user = user;
-        localStorage.setItem("user", user.email);
+        localStorage.setItem("user", user);
       });
   },
 
