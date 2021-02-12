@@ -26,6 +26,7 @@ const actions = {
       .post("http://localhost:3000/api/login", user)
       .then((response) => {
         console.log(response);
+        state.user = user;
         localStorage.setItem("user", user.email);
       });
   },
