@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link>
-    <span v-if="isLoggedIn">
+    <span v-if="isLoggedIn"> <!-- needs work -->
       <a @click="logout">Logout</a>
     </span>
     <span v-else>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+// needs work
 export default {
   name: "NavBar",
   computed: {
