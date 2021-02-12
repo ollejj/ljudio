@@ -12,7 +12,6 @@
         </div>
         <button type="submit">Login</button>
       </form>
-      <p v-if="showError" id="error">Username or Password is incorrect</p>
     </div>
   </div>
 </template>
@@ -28,21 +27,16 @@ export default {
         email: "",
         password: "",
       },
-      showError: false,
     };
   },
   methods: {
     ...mapActions(["LogIn"]),
     async submit() {
-      const user = new FormData();
-      user.append("email", this.form.username);
-      user.append("password", this.form.password);
       try {
-        await this.logIn(user);
+        await this.LogIn(this.form);
         this.$router.push("/");
-        this.showError = false;
       } catch (error) {
-        this.showError = true;
+        console.log(error)
       }
     },
   },

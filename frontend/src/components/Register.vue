@@ -4,24 +4,33 @@
       <form @submit.prevent="submit">
         <div>
           <label for="email">E-mail</label>
-          <input type="text" name="email" v-model="form.email" />
+          <input type="text" name="email" v-model="form.email" required />
         </div>
         <div>
           <label for="password">Password</label>
-          <input type="text" name="password" v-model="form.password" />
+          <input type="text" name="password" v-model="form.password" required />
         </div>
         <div>
           <label for="firstName">First Name</label>
-          <input type="text" name="first_name" v-model="form.first_name" />
+          <input
+            type="text"
+            name="first_name"
+            v-model="form.first_name"
+            required
+          />
         </div>
         <div>
           <label for="lastName">E-mail</label>
-          <input type="text" name="last_name" v-model="form.last_name" />
+          <input
+            type="text"
+            name="last_name"
+            v-model="form.last_name"
+            required
+          />
         </div>
         <button type="submit">Register</button>
       </form>
     </div>
-    <p v-if="showError" id="error">E-mail already in use</p>
   </div>
 </template>
 
@@ -38,19 +47,16 @@ export default {
         first_name: "",
         last_name: "",
       },
-      showError: false,
     };
   },
   methods: {
     ...mapActions(["Register"]),
     async submit() {
-      //console.log(this.form)
       try {
         await this.Register(this.form);
         this.$router.push("/");
-        this.showError = false;
       } catch (error) {
-        this.showError = true;
+        console.log(error);
       }
     },
   },

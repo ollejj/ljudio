@@ -22,25 +22,21 @@ const actions = {
   },
 
   async LogIn({ commit }, user) {
-    await fetch("/api/login", {
-      method: "POST",
-      body: JSON.stringify(user),
-    })
+    await axios
+      .post("http://localhost:3000/api/login", user)
       .then((response) => {
         console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
+        localStorage.setItem("user", user.email);
       });
-    //await commit("setUser", user.get("email")).catch(error => {console.log(error)});
   },
 
+  // needs to be worked on
   async logOut({ commit }) {
     let user = null;
     commit("logout", user);
   },
 };
-
+// needs work
 const mutations = {
   setUser(state, email) {
     state.user = email;
