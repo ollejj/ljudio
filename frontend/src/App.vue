@@ -1,19 +1,6 @@
 <template>
     <div class="main">
         <router-view/>
-        <NavBar />
-        <div class="left">
-            <Playlists class="playlists" user="User" />
-            <SearchField />
-        </div>
-        <div class="right">
-            <PlaylistHeader
-                class="playlist-header"
-                playlistName="My Playlist"
-            />
-            <PlaylistContent class="playlist-content" />
-            <Timeline class="timeline" />
-        </div>
     </div>
 </template>
 
