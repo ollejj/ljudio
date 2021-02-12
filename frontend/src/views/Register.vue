@@ -1,14 +1,14 @@
 <template>
-    <Register/>
+    <RegisterComponent/>
 </template>
 
 <script>
-import Register from '../components/Register.vue'
+import RegisterComponent from '../components/Register.vue'
 
 export default {
     name: "Register",
     components: {
-        Register
+        RegisterComponent
     }
 };
 </script>
