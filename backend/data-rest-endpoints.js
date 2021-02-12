@@ -56,7 +56,7 @@ module.exports = (app, db) => {
     })
 
     // Get all Playlists for user
-    app.get('/api/playlists/:id', async (request, response) => {
+    app.get('/api/userplaylist/:id', async (request, response) => {
         let data = await db.query('select * from userplaylist where id = ?', request.params.id)
         response.json(data);
     })
@@ -65,21 +65,7 @@ module.exports = (app, db) => {
         response.json(result)
     })
 
-    app.get('/api/songs/', async (request, response) => {
-        let data = await db.query('SELECT * FROM songs')
-        response.json(data);
-    })
-
-    app.get('/api/songs/:id', async (request, response) => {
-        let data = await db.query('SELECT * FROM songs WHERE id = ?', request.params.id)
-        response.json(data);
-    })
-
-    app.delete('/api/songs/:id', async (request, response) => {
-        let result = await db.query('DELETE FROM songs WHERE id = ?', request.params.id)
-        response.json(result)
-    })
-
+    
 
     // Example routes
 
@@ -135,6 +121,22 @@ module.exports = (app, db) => {
             return;
         }
         let result = await db.query("DELETE FROM examples WHERE id = ?", request.params.id)
+        response.json(result)
+    })
+
+    // Might need these later.
+    app.get('/api/songs/', async (request, response) => {
+        let data = await db.query('SELECT * FROM songs')
+        response.json(data);
+    })
+
+    app.get('/api/songs/:id', async (request, response) => {
+        let data = await db.query('SELECT * FROM songs WHERE id = ?', request.params.id)
+        response.json(data);
+    })
+
+    app.delete('/api/songs/:id', async (request, response) => {
+        let result = await db.query('DELETE FROM songs WHERE id = ?', request.params.id)
         response.json(result)
     })
 
