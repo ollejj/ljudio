@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     async logout() {
-      await this.$store.dispatch("logOut");
+      await this.$store.dispatch("LogOut");
       this.$router.push("/login");
     },
   },
