@@ -4,7 +4,7 @@
     <PlaylistItem
       v-for="index in arrPlaylist.length"
       :key="index"
-      :listName="arrPlaylist[index - 1]['playlistid']"
+      :listName="arrPlaylist[index-1]['playlistname']"
     />
   </div>
 </template>
@@ -21,21 +21,30 @@ export default {
     return {
       playlist: String,
       arrPlaylist: [],
+      playlistIDs: []
     };
   },
 
   async created() {
-    /*const res = await fetch("/api/userplaylist/1");
-    const data = await res.json();
-    this.playlist = data;
-    arrPlaylist.push(data);*/
 
-    let promise = await fetch("/api/userplaylist/1");
-    promise.json().then((data) => {
+    let playlists = await fetch("/api/userplaylist/2");
+    playlists.json().then((data) => {
       data.forEach((playlist) => {
-        this.arrPlaylist.push(playlist);
+        this.playlistIDs.push(playlist.playlistid);
+      });
+    })
+    .then(() => {
+      this.playlistIDs.forEach(async (id) => {
+        let playlistDetails = await fetch("/api/playlistsongs/" + id);
+        playlistDetails.json()
+        .then((data) => {
+          data.forEach((list) => {
+            this.arrPlaylist.push(list);
+          });
+        });
       });
     });
+
   },
 };
 </script>
