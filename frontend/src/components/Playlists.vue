@@ -2,9 +2,10 @@
   <div>
     <h1>Playlists</h1>
     <PlaylistItem
-      v-for="index in arrPlaylist.length"
-      :key="index"
-      :listName="arrPlaylist[index-1]['playlistname']"
+      v-for="index in arrPlaylist"
+      :key="index.playlistid"
+      v-on:click="sendSongsToStore(index.playlistid)"
+      :listName="index['playlistname']"
     />
   </div>
 </template>
@@ -24,7 +25,14 @@ export default {
       playlistIDs: []
     };
   },
-
+  methods: {
+    async sendSongsToStore(index) {
+      let response = await fetch('/api/playlist/' + index);
+      await response.json().then((res) => {
+        this.$store.commit('setSelectedPlaylist', res)
+      })
+    },
+  },
   async created() {
 
     let playlists = await fetch("/api/userplaylist/2");
