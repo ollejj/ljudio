@@ -59,12 +59,18 @@ module.exports = (app, db) => {
 
     // Get all song from specific playlist.
     app.get('/api/playlistsongs/:id', async (request, response) => {
-        let data = await db.query('SELECT * FROM playlist WHERE playlistid =?', request.params.id)
+        let data = await db.query('SELECT DISTINCT playlistid, playlistname FROM playlist WHERE playlistid = ?', request.params.id)
         response.json(data);
     })
     // Get all Playlists for user
     app.get('/api/userplaylist/:id', async (request, response) => {
         let data = await db.query('select * from userplaylist where userid = ?', request.params.id)
+        response.json(data);
+    })
+
+    //Get all Songs for playlistid
+    app.get('/api/playlist/:id', async (request, response) => {
+        let data = await db.query('select * from playlist where playlistid = ?', request.params.id)
         response.json(data);
     })
     // Delete song from playlist, may needs tweasking.
