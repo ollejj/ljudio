@@ -22,6 +22,7 @@ import PlaylistHeader from "../components/PlaylistHeader.vue";
 import PlaylistContent from "../components/PlaylistContent.vue";
 import Timeline from "../components/Timeline.vue";
 import SearchField from "../components/SearchField.vue";
+import NavBar from "../components/NavBar.vue";
 
 export default {
     name: "App",
@@ -31,6 +32,7 @@ export default {
         PlaylistContent,
         Timeline,
         SearchField,
+        NavBar
     },
 };
 </script>
