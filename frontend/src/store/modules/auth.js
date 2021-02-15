@@ -2,10 +2,11 @@ import axios from "axios";
 
 const state = {
   user: null,
+  password: null,
 };
 
 const getters = {
-  isAuthenticated: (state) => !!state.user || localStorage['user'],
+  isAuthenticated: (state) => !!state.user || localStorage["user"],
   StateUser: (state) => !!state.User,
 };
 
@@ -22,29 +23,65 @@ const actions = {
   },
 
   async LogIn({ commit }, user) {
-    await axios
-      .post("http://localhost:3000/api/login", user)
-      .then((response) => {
-        console.log(response);
-        state.user = user;
-        localStorage.setItem("user", user);
+    fetch("/api/login", {
+      method: "POST",
+      body: JSON.stringify(user),
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("user", user.email);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
       });
+    await commit("setUser", user.email);
+    await commit("setPassword", user.password);
   },
 
-  // needs to be worked on
-  async logOut({ commit }) {
+  async LogOut({ commit }) {
+    await fetch("/api/login", {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.loggedIn == true) {
+          fetch("/api/login", {
+            method: "DELETE",
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        }
+      })
+      .catch((error) => {
+        console.error("Error", error);
+      });
+    localStorage.removeItem("user");
     let user = null;
-    commit("logout", user);
+    commit("logOut", user);
   },
 };
-// needs work
 const mutations = {
   setUser(state, email) {
     state.user = email;
   },
 
+  setPassword(state, password) {
+    state.password = password;
+  },
+
   logOut(state) {
     state.user = null;
+    state.password = null;
   },
 };
 
