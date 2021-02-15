@@ -11,7 +11,7 @@ module.exports = (app, db) => {
         let result = await db.query("INSERT INTO users SET ?", { ...request.body, password })
         response.json(result)
     });
-    
+
 
     // authentication: perform login
     app.post('/api/login', async (request, response) => {
@@ -58,7 +58,7 @@ module.exports = (app, db) => {
 
     // Get all Playlists for user
     app.get('/api/userplaylist/:id', async (request, response) => {
-        let data = await db.query('select * from userplaylist where id = ?', request.params.id)
+        let data = await db.query('select * from userplaylist where userid = ?', request.params.id)
         response.json(data);
     })
     app.delete("/api/playlist/:id", async (request, response) => {
@@ -66,7 +66,7 @@ module.exports = (app, db) => {
         response.json(result)
     })
 
-    
+
 
     // Example routes
 
