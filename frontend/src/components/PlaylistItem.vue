@@ -26,6 +26,7 @@ div {
     justify-content: center;
     align-items: center;
     height: 5vh;
+    border-bottom: 1px solid #00000022;
 
     /*Disable the user to select text on the Song Items*/
     user-select: none; /*Currently supported by Chrome, Edge, Opera and Firefox*/

@@ -1,10 +1,9 @@
 <template>
     <div>
-        <h1>Search Field</h1>
-        <input
+        <input v-on:keyup.enter="searchSong"
             v-model="inputText"
             type="text"
-            placeholder="Search string for song"
+            placeholder="Search..."
         />
         <button v-on:click="searchSong">Search</button>
     </div>
@@ -21,6 +20,8 @@ export default {
     },
     methods: {
         async searchSong() {
+            if (!this.inputText) return;
+
             let promise = await fetch("/api/yt/songs/" + this.inputText);
             await promise
                 .json()
@@ -42,7 +43,6 @@ export default {
                 })
                 .catch((err) => console.log(err));
             this.$store.commit("setSelectedPlaylist", this.results);
-            this.inputText = "";
             this.results = [];
         },
     },
@@ -50,15 +50,24 @@ export default {
 </script>
 
 <style scoped>
+
+div {
+    padding: 1vw;
+    box-sizing: border-box;
+}
+
 h1, form, button {
     margin: 5px;
 }
 
-input, button {
-    border-radius: 10px;
+input {
+    width: 80%;
+    height: 30%;
 }
 
-button:hover {
-    background-color:greenyellow;
+button {
+    width: 20%;
+    margin: 0;
+    height: 30%;
 }
 </style>

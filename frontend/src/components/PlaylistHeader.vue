@@ -23,4 +23,7 @@ export default {
 </script>
 
 <style scoped>
+div {
+    padding: 1vw;
+}
 </style>
