@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>{{ playlistName }}</h1>
+        <h1>{{ getPlaylistDetails.name || 'Napster2'}}</h1>
     </div>
 </template>
 
@@ -13,6 +13,11 @@ export default {
     data() {
         return {};
     },
+    computed: {
+        getPlaylistDetails() {
+            return this.$store.state.playlists.selectedPlaylist;
+        }
+    }
 };
 </script>
 
