@@ -70,4 +70,18 @@ button {
     margin: 0;
     height: 30%;
 }
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 375px) {
+
+    input, button {
+        height: 50%;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}
 </style>

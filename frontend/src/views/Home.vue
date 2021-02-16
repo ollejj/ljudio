@@ -40,7 +40,6 @@ export default {
 </script>
 
 <style scoped>
-
 .main {
     display: flex;
     flex-direction: row;
@@ -92,7 +91,56 @@ export default {
 .timeline {
     height: 15vh;
 }
+
 .songitem {
     height: 55vh;
+}
+
+@media screen and (max-width: 1024px) {
+    .playlist-header {
+        height: 15vh;
+        width: 50%;
+    }
+
+    .search-field {
+        height: 15vh;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .left {
+        display: none;
+    }
+
+    .right {
+        width: 100vw;
+    }
+
+    .top {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .playlist-header {
+        display: flex;
+        height: 50%;
+        width: 100%;
+        align-items: center;
+    }
+
+    .search-field {
+        display: flex;
+        height: 15vh;
+        width: 100%;
+        align-items: flex-end;
+    }
+
+    .timeline {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #ffffff;
+    }
 }
 </style>
