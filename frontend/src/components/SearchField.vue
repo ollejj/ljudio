@@ -49,4 +49,16 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+h1, form, button {
+    margin: 5px;
+}
+
+input, button {
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color:greenyellow;
+}
+</style>

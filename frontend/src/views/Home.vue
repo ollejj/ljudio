@@ -3,13 +3,15 @@
         <NavBar />
         <div class="left">
             <Playlists class="playlists" user="User" />
-            <SearchField />
         </div>
         <div class="right">
+            <div class="top">
             <PlaylistHeader
                 class="playlist-header"
                 playlistName="My Playlist"
             />
+            <SearchField class="search-field" />
+            </div>
             <PlaylistContent class="playlist-content" />
             <Timeline class="timeline" />
         </div>
@@ -60,9 +62,21 @@ export default {
     height: 100vh;
 }
 
+.top {
+  display: flex;
+  flex-direction: row;
+}
+
 .playlist-header {
     border: 1px solid black;
     height: 15vh;
+    width: 42.5vW;
+}
+
+.search-field {
+    border: 1px solid black;
+    height: 15vh;
+    width: 42.5vw;
 }
 
 .playlist-content {
