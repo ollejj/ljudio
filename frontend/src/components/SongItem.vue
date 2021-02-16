@@ -69,4 +69,15 @@ span {
     height: 100%;
     padding: .5vw;
 }
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 375px) {
+
+    span {
+        display: flex;
+        font-size: .8rem;
+    }
+}
 </style>

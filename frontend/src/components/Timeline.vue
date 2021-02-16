@@ -47,4 +47,15 @@ input {
     width: 3vw;
     height: 3vh;
 }
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 375px) {
+
+    input {
+        width: 10vw;
+        height: 5vh;
+    }
+}
 </style>
