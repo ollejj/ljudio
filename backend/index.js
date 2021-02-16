@@ -4,8 +4,10 @@ const port = 3000
 // express server
 const express = require('express')
 const cors = require('cors')
+const apilogger = require('api-logger');
 const app = express()
 app.use(cors())
+app.use(apilogger())
 
 // add body-parser to express
 const bodyParser = require('body-parser')
