@@ -10,7 +10,8 @@
     "vue": "^3.0.4",
     "vue-router": "^4.0.3",
     "vue-slider-component": "^4.0.0-beta.3",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.0",
+    "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "vite": "^1.0.0-rc.13",
