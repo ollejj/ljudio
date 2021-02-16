@@ -5,21 +5,21 @@
             <input
                 v-model="inputText"
                 type="text"
-                placeholder="Search string for song/artist"
+                placeholder="Search string for song"
             />
             <button>Search</button>
         </form>
-        <SearchList v-bind:songList="songList"/>
+        <!--<PlaylistContent v-bind:songList="songList"/> -->
     </div>
 </template>
 
 <script>
-import SearchList from "./SearchList.vue"
+//import SearchList from "./SearchList.vue"
 
 export default {
     name: 'SearchField',
     components: {
-        SearchList
+        //SearchList
     },
     data () {
         return {
@@ -27,30 +27,30 @@ export default {
             songList: [],
         };
     },
-    /*async created() {
-        /*let searchString = 'music'
-        let res = await fetch('/api/yt/songs/' + searchString)
-        let songs = await res.json()
-        
-        console.log(songs)
-    },*/
+    computed: {
+        songsFromSearch() {
+            return this.$store.state.searchResultList
+        }
+    },
     methods: {
         async searchSong() {
             let promise = await fetch(
                 '/api/yt/songs/' + this.inputText
             )
             promise.json().then((data) => {
-                var i;
+                let i;
                 for (i = 0; i < data.content.length; i++) {
-                    this.songList.push({songTitle: data.content[i].name, 
-                                        artistName: data.content[i].artist.name,
-                                        videoId: data.content[i].videoId,
-                                        songLength:data.content[i].duration})
-                }
-            })
+                    this.songList.push({
+                        songName: data.content[i].name, 
+                        songArtist: data.content[i].artist.name,
+                        id: data.content[i].videoId,
+                        songDuration:data.content[i].duration
+                    })
+                })
             .catch((err) => console.log(err));
-            console.log(this.songList)
-        }
+            this.$store.commit('addSearchResults', this.songList)
+            this.inputText = ''
+        },
     }
 
 }

@@ -1,6 +1,6 @@
 <template>
 <div>
-    <li>{{ song.songTitle }}, {{ song.artistName }}, {{ song.videoId }}</li>
+    <li>{{ song.songName }}, {{ song.songArtist }}, {{ song.id }}, {{ song.songDuration }}</li>
 </div>
   
 </template>

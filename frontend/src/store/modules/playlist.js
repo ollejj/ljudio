@@ -9,7 +9,8 @@ const state = {
         songs: [],
         name: "",
         id: ""
-    }
+    },
+    searchResultList: []
 };
 
 const getters = {
@@ -21,7 +22,14 @@ const actions = {
 }
 
 const mutations = {
-
+    addSearchResults(state, list) { 
+        state.searchResultList.push(list)
+        console.log(list)
+    },
+    removeSearchResults(state) {
+        state.searchResultList.splice(0, state.searchResultList.length)
+        console.log("Successfully emptied " + state.searchResultList);   
+    }
 };
 
 export default {
