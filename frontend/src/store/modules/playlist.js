@@ -4,7 +4,7 @@ const state = {
     /*
      * Each element of [playlists] will be an object similar to [selectedPlaylist] 
      */
-    playlists: [[]],
+
     selectedPlaylist: {
         songs: [],
         name: "",
@@ -13,7 +13,7 @@ const state = {
 };
 
 const getters = {
-    
+
 };
 
 const actions = {
@@ -24,13 +24,13 @@ const mutations = {
     setSelectedPlaylist: (state, data) => {
         state.selectedPlaylist = {
             songs: [],
-            name: "",
+            name: data[0].playlistname,
             id: ""
         };
-
+        console.log(data[0].playlistname);
         data.forEach((song) => {
-            state.selectedPlaylist.name = song.playlistname;
-            state.selectedPlaylist.id = song.playlistid;
+            //state.selectedPlaylist.name = song.playlistname;
+            state.selectedPlaylist.id = song.playlistid || '-1';
             state.selectedPlaylist.songs.push({
                 id: song.songid,
                 album: song.album,
@@ -42,7 +42,7 @@ const mutations = {
         
 
         console.log(state.selectedPlaylist);
-    }
+    },
 };
 
 export default {

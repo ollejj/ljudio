@@ -34,7 +34,7 @@ export default {
   flex-direction: column;
   width: 15vw;
 }
-
+ 
 .right {
   display: flex;
   flex-direction: column;

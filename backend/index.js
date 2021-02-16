@@ -4,8 +4,10 @@ const port = 3000
 // express server
 const express = require('express')
 const cors = require('cors')
+const apilogger = require('api-logger');
 const app = express()
 app.use(cors())
+app.use(apilogger())
 
 // add body-parser to express
 const bodyParser = require('body-parser')
@@ -32,7 +34,7 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
-    password: 'mysql',
+    password: '',
     database: 'nodemusic'
 });
 // vi gör om mysql-metoderna connect och query till promise-metoder så att vi kan använda async/await för att vänta på databasen

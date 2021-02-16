@@ -1,59 +1,64 @@
 <template>
     <div>
         <h1>Search Field</h1>
-        <form @submit.prevent="searchSong">
-            <input
-                v-model="inputText"
-                type="text"
-                placeholder="Search string for song/artist"
-            />
-            <button>Search</button>
-        </form>
-        <SearchList v-bind:songList="songList"/>
+        <input
+            v-model="inputText"
+            type="text"
+            placeholder="Search string for song"
+        />
+        <button v-on:click="searchSong">Search</button>
     </div>
 </template>
 
 <script>
-import SearchList from "./SearchList.vue"
-
 export default {
-    name: 'SearchField',
-    components: {
-        SearchList
-    },
-    data () {
+    name: "SearchField",
+    data() {
         return {
             inputText: "",
-            songList: [],
+            results: [],
         };
     },
-    /*async created() {
-        /*let searchString = 'music'
-        let res = await fetch('/api/yt/songs/' + searchString)
-        let songs = await res.json()
-        
-        console.log(songs)
-    },*/
     methods: {
         async searchSong() {
-            let promise = await fetch(
-                '/api/yt/songs/' + this.inputText
-            )
-            promise.json().then((data) => {
-                var i;
-                for (i = 0; i < data.content.length; i++) {
-                    this.songList.push({songTitle: data.content[i].name, 
-                                        artistName: data.content[i].artist.name,
-                                        videoId: data.content[i].videoId,
-                                        songLength:data.content[i].duration})
-                }
-            })
-            .catch((err) => console.log(err));
-            console.log(this.songList)
-        }
-    }
+            let promise = await fetch("/api/yt/songs/" + this.inputText);
+            await promise
+                .json()
+                .then((data) => {
+                    console.log(data);
 
-}
+                    data.content.forEach((song) => {
+                        this.results.push({
+                            title: song.name,
+                            album: song.album,
+                            artist: song.artist.name,
+                            songid: song.videoId,
+                            length: song.duration,
+                            playlistname: `Search results for '${this.inputText}'`,
+                        });
+                    });
+
+                    console.log(this.inputText);
+                })
+                .catch((err) => console.log(err));
+            this.$store.commit("setSelectedPlaylist", this.results);
+            this.inputText = "";
+            this.results = [];
+        },
+    },
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+h1, form, button {
+    margin: 5px;
+}
+
+input, button {
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color:greenyellow;
+}
+</style>
