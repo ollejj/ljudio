@@ -40,7 +40,6 @@ const actions = {
           console.log("wrong email or password");
           return;
         }
-        localStorage.setItem("user", user.email);
         console.log(data);
       })
       .catch((error) => {
@@ -86,7 +85,6 @@ const mutations = {
 
   logOut(state) {
     state.user = null;
-    state.password = null;
   },
 };
 
