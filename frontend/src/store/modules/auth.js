@@ -6,7 +6,7 @@ const state = {
 };
 
 const getters = {
-  isAuthenticated: (state) => !!state.user || localStorage["user"],
+  isAuthenticated: (state) => !!state.user,
   StateUser: (state) => !!state.User,
 };
 
@@ -23,7 +23,7 @@ const actions = {
   },
 
   async LogIn({ commit }, user) {
-    fetch("/api/login", {
+    await fetch("/api/login", {
       method: "POST",
       body: JSON.stringify(user),
       cache: "no-cache",
@@ -33,14 +33,19 @@ const actions = {
     })
       .then((response) => response.json())
       .then((data) => {
+        if (data.loggedIn == true) {
+          commit("setUser", user.email);
+          console.log(state.user);
+        } else {
+          console.log("wrong email or password");
+          return;
+        }
         localStorage.setItem("user", user.email);
         console.log(data);
       })
       .catch((error) => {
         console.error(error);
       });
-    await commit("setUser", user.email);
-    await commit("setPassword", user.password);
   },
 
   async LogOut({ commit }) {
