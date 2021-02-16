@@ -1,8 +1,8 @@
 <template>
     <div>
         <SongItem
-            v-for="index in 100"
-            :key="index"
+            v-for="(song, i) in getSongs"
+            :key="i"
             songName="asdfasdfasdf"
             songArtist="asdfson"
             songDuration="1.45"
@@ -18,6 +18,11 @@ export default {
     name: "PlaylistContent",
     components: {
         SongItem,
+    },
+    computed: {
+        getSongs() {
+            return this.$store.state.playlists.selectedPlaylist.songs;
+        }
     },
 };
 </script>
