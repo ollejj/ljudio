@@ -35,7 +35,14 @@ export default {
   },
   async created() {
 
-    let playlists = await fetch("/api/userplaylist/2");
+    let userid = await fetch("/api/login", {
+      method: "GET",
+    });
+    userid.json().then((data) => {
+      console.log(data.id);
+    });
+
+    let playlists = await fetch("/api/userplaylist/" + 2);
     playlists.json().then((data) => {
       data.forEach((playlist) => {
         this.playlistIDs.push(playlist.playlistid);
