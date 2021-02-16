@@ -1,5 +1,10 @@
 <template>
     <div>
+        <SearchItem
+            v-for="(song, i) in songsFromSearch"
+            :key="i"
+            :song="song"
+        />
         <SongItem
             v-for="(song, i) in getSongs"
             :key="i"
@@ -12,22 +17,27 @@
 </template>
 
 <script>
+import SearchItem from "./SearchItem.vue";
 import SongItem from "./SongItem.vue";
 
 export default {
     name: "PlaylistContent",
     components: {
-        SongItem,
+        SearchItem,
+        SongItem
     },
     computed: {
         getSongs() {
             return this.$store.state.playlists.selectedPlaylist.songs;
+        },
+        songsFromSearch() {
+            console.log("Inside PlaylistContent computed songsFromSearch method")
+            return this.$store.state.playlists.searchResultList
         }
-    },
+    }
 };
 </script>
 
 <style scoped>
-div {
-}
+
 </style>
