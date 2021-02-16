@@ -9,12 +9,10 @@
             />
             <button>Search</button>
         </form>
-        <!--<PlaylistContent v-bind:songList="songList"/> -->
     </div>
 </template>
 
 <script>
-//import SearchList from "./SearchList.vue"
 
 export default {
     name: 'SearchField',
@@ -44,9 +42,9 @@ export default {
                         songName: data.content[i].name, 
                         songArtist: data.content[i].artist.name,
                         id: data.content[i].videoId,
-                        songDuration:data.content[i].duration
-                    })
-                })
+                        songDuration:data.content[i].duration})
+                }
+            })
             .catch((err) => console.log(err));
             this.$store.commit('addSearchResults', this.songList)
             this.inputText = ''

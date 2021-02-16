@@ -1,12 +1,10 @@
 <template>
     <div>
-        <ul>
         <SearchItem
             v-for="(song, i) in songsFromSearch"
             :key="i"
             :song="song"
         />
-        </ul>
         <SongItem
             v-for="index in 5"
             :key="index"
@@ -19,20 +17,19 @@
 </template>
 
 <script>
+import SearchItem from "./SearchItem.vue";
 import SongItem from "./SongItem.vue";
-import SearchItem from "./SearchItem.vue"
 
 export default {
     name: "PlaylistContent",
     components: {
         SearchItem,
         SongItem
-
     },
     computed: {
         songsFromSearch() {
-            console.log("Nu har vi kommit så här långt.")
-            return this.$store.state.searchResultList
+            console.log("Inside PlaylistContent computed songsFromSearch method")
+            return this.$store.state.playlists.searchResultList
         }
     }
 };
