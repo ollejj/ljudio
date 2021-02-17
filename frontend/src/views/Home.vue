@@ -40,6 +40,7 @@ export default {
 </script>
 
 <style scoped>
+
 .main {
     display: flex;
     flex-direction: row;
@@ -62,6 +63,7 @@ export default {
 .playlists {
     height: 90vh;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 .navbar {
@@ -71,6 +73,7 @@ export default {
 .top {
     display: flex;
     flex-direction: row;
+    border-bottom: 1px solid #323232;
 }
 
 .playlist-header {

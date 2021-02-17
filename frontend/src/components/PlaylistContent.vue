@@ -29,8 +29,8 @@ export default {
     },
     computed: {
         getPlaylist() {
-            console.log(this.$store.state.playlists.selectedPlaylist);
-            return this.$store.state.playlists.selectedPlaylist;
+            let idCheck = this.$store.state.playlists.selectedPlaylist.songs[0].id;
+            return (idCheck != undefined) ? this.$store.state.playlists.selectedPlaylist : {};
         },
     },
 };

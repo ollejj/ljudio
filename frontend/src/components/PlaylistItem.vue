@@ -1,6 +1,7 @@
 <template>
     <div v-on:click="openList(id)">
         <p>{{ listName }}</p>
+        <input type="button" value="edit">
     </div>
 </template>
 
@@ -40,5 +41,11 @@ div:hover {
 p {
     font-size: 1.3rem;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    height: 100%;
+    padding: .5vw;
 }
 </style>
