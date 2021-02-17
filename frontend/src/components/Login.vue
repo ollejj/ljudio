@@ -13,11 +13,13 @@
         <button type="submit">Login</button>
       </form>
     </div>
+    <p v-if="showError" id="error">Wrong e-mail or password</p>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import store from "../store";
 export default {
   name: "Login",
   components: {},
@@ -27,6 +29,7 @@ export default {
         email: "",
         password: "",
       },
+      showError: false
     };
   },
   methods: {
@@ -36,7 +39,10 @@ export default {
         await this.LogIn(this.form);
         this.$router.push("/");
       } catch (error) {
-        console.log(error)
+        console.log(error);
+      }
+      if (!store.getters.isAuthenticated) {
+      this.showError = true;
       }
     },
   },

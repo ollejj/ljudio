@@ -15,6 +15,7 @@ export default {
     },
     computed: {
         getPlaylistDetails() {
+            console.log(this.$store.state.playlists.selectedPlaylist);
             return this.$store.state.playlists.selectedPlaylist;
         }
     }
@@ -22,4 +23,7 @@ export default {
 </script>
 
 <style scoped>
+div {
+    padding: 1vw;
+}
 </style>

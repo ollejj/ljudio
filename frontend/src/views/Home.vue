@@ -1,16 +1,16 @@
 <template>
     <div class="main">
-        <NavBar />
         <div class="left">
             <Playlists class="playlists" user="User" />
+            <NavBar clasS="navbar" />
         </div>
         <div class="right">
             <div class="top">
-            <PlaylistHeader
-                class="playlist-header"
-                playlistName="My Playlist"
-            />
-            <SearchField class="search-field" />
+                <PlaylistHeader
+                    class="playlist-header"
+                    playlistName="My Playlist"
+                />
+                <SearchField class="search-field" />
             </div>
             <PlaylistContent class="playlist-content" />
             <Timeline class="timeline" />
@@ -34,7 +34,7 @@ export default {
         PlaylistContent,
         Timeline,
         SearchField,
-        NavBar
+        NavBar,
     },
 };
 </script>
@@ -49,6 +49,8 @@ export default {
     display: flex;
     flex-direction: column;
     width: 15vw;
+    justify-content: space-evenly;
+    border-right: 1px solid #323232;
 }
 
 .right {
@@ -58,39 +60,87 @@ export default {
 }
 
 .playlists {
-    border: 1px solid black;
-    height: 100vh;
+    height: 90vh;
+    overflow: auto;
+}
+
+.navbar {
+    height: 10vh;
 }
 
 .top {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .playlist-header {
-    border: 1px solid black;
     height: 15vh;
-    width: 42.5vW;
+    width: 70%;
 }
 
 .search-field {
-    border: 1px solid black;
     height: 15vh;
-    width: 42.5vw;
+    width: 30%;
 }
 
 .playlist-content {
-    border: 1px solid black;
     height: 70vh;
     overflow: auto;
 }
 
 .timeline {
-    border: 1px solid black;
     height: 15vh;
 }
+
 .songitem {
-    border: 1px solid black;
     height: 55vh;
+}
+
+@media screen and (max-width: 1024px) {
+    .playlist-header {
+        height: 15vh;
+        width: 50%;
+    }
+
+    .search-field {
+        height: 15vh;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .left {
+        display: none;
+    }
+
+    .right {
+        width: 100vw;
+    }
+
+    .top {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .playlist-header {
+        display: flex;
+        height: 50%;
+        width: 100%;
+        align-items: center;
+    }
+
+    .search-field {
+        display: flex;
+        height: 15vh;
+        width: 100%;
+        align-items: flex-end;
+    }
+
+    .timeline {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #ffffff;
+    }
 }
 </style>

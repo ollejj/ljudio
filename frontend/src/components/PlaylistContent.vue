@@ -1,43 +1,39 @@
 <template>
     <div>
-        <SearchItem
-            v-for="(song, i) in songsFromSearch"
-            :key="i"
-            :song="song"
-        />
         <SongItem
-            v-for="(song, i) in getSongs"
+            v-for="(song, i) in getPlaylist.songs"
             :key="i"
-            songName="asdfasdfasdf"
-            songArtist="asdfson"
-            songDuration="1.45"
-            id="dQw4w9WgXcQ"
+            :songName="song.title"
+            :songArtist="song.artist"
+            :songDuration="millisToMinutesAndSeconds(song.duration)"
+            :id="song.id"
+            :playlistid="getPlaylist.id"
         />
     </div>
 </template>
 
 <script>
-import SearchItem from "./SearchItem.vue";
 import SongItem from "./SongItem.vue";
 
 export default {
     name: "PlaylistContent",
     components: {
-        SearchItem,
-        SongItem
+        SongItem,
+    },
+    methods: {
+        millisToMinutesAndSeconds(millis) {
+            var minutes = Math.floor(millis / 60000);
+            var seconds = ((millis % 60000) / 1000).toFixed(0);
+            return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+        },
     },
     computed: {
-        getSongs() {
-            return this.$store.state.playlists.selectedPlaylist.songs;
+        getPlaylist() {
+            console.log(this.$store.state.playlists.selectedPlaylist);
+            return this.$store.state.playlists.selectedPlaylist;
         },
-        songsFromSearch() {
-            console.log("Inside PlaylistContent computed songsFromSearch method")
-            return this.$store.state.playlists.searchResultList
-        }
-    }
+    },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
