@@ -61,4 +61,11 @@ export default {
 .songitem {
     height: 55vh;
 }
+
+.sidenav-overlay {
+    width: 0;
+    height: 0;
+    display:none;
+    z-index: -3000;
+}
 </style>
