@@ -9,13 +9,13 @@
       <a href=""><span class="white-text name">Anyone</span></a>
       <a href=""><span class="white-text email">anyone@gmail.com</span></a>
     </div></li>
+    <li><a class="subheader">Playlists</a></li>
     <li><a href="#!"><i class="material-icons">cloud</i>Search field</a></li>
-    <li><a href="#!">Song list</a></li>
-    <li><a href="#!">Play lists</a></li>
-    <li><a href="#!">Musik player</a></li>
+    <li><a href="#!">Playlist 1</a></li>
+    <li><a href="#!">Playlist 2</a></li>
+    <li><a href="#!">Playlist 3</a></li>
     <li><div class="divider"></div></li>
-    <li><a class="subheader">Important functions</a></li>
-    <li><a class="waves-effect" href="#!">Logout (With Waves)</a></li>
+    <li><div class="waves-effect"><NavBar class="navbar" /></div></li>
   </ul>
   <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
   </div>
@@ -23,9 +23,13 @@
 
 <script>
 import M from 'materialize-css'
+import NavBar from "../components/NavBar.vue";
 
 export default {
     name: 'SlidingSideNav',
+    components: {
+      NavBar
+    },
     mounted: function() {
     M.AutoInit()
     }

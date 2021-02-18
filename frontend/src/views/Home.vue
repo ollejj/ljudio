@@ -3,7 +3,7 @@
         <div class="left">
             <Playlists class="playlists" user="User" />
             <NavBar class="navbar" />
-            <!--<SlidingSideNav />-->
+            <SlidingSideNav />
         </div>
         <div class="right">
             <div class="top">
