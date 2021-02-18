@@ -14,7 +14,6 @@
                     <SearchField class="search-field" />
                 </div>
                 <PlaylistContent class="playlist-content" />
-                <Timeline class="timeline" />
                 <SlidingSideNav class="sliding-side-nav" />
             </div>
         </div>
@@ -76,7 +75,7 @@ export default {
 .right {
     display: flex;
     flex-direction: column;
-    width: 85vw;
+    width: 84vw;
 }
 
 .playlists {
@@ -102,6 +101,7 @@ export default {
 .playlist-header {
     height: 15vh;
     width: 70%;
+    overflow: hidden;
 }
 
 .search-field {
