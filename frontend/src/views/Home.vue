@@ -1,21 +1,23 @@
 <template>
     <div class="main">
-        <div class="left">
-            <Playlists class="playlists" user="User" />
-            <NavBar class="navbar" />
-        </div>
-        <div class="right">
-            <div class="top">
-                <PlaylistHeader
-                    class="playlist-header"
-                    playlistName="My Playlist"
-                />
-                <SearchField class="search-field" />
+        <div id="row">
+            <div class="left">
+                <Playlists class="playlists" user="User" />
+                <NavBar class="navbar" />
             </div>
-            <PlaylistContent class="playlist-content" />
-            <Timeline class="timeline" />
-            <SlidingSideNav class="sliding-side-nav" />
+            <div class="right">
+                <div class="top">
+                    <PlaylistHeader
+                        class="playlist-header"
+                        playlistName="My Playlist"
+                    />
+                    <SearchField class="search-field" />
+                </div>
+                <PlaylistContent class="playlist-content" />
+                <SlidingSideNav class="sliding-side-nav" />
+            </div>
         </div>
+        <Timeline class="timeline" />
     </div>
 </template>
 
@@ -37,22 +39,26 @@ export default {
         Timeline,
         SearchField,
         NavBar,
-        SlidingSideNav
+        SlidingSideNav,
     },
     computed: {
         checkPopupState() {
-            return this.$store.state.playlists.showPlaylistPopup
+            return this.$store.state.playlists.showPlaylistPopup;
         },
         getPlaylists() {
             return this.$store.state.playlists.userPlaylistsIDs;
-        }
-    }
+        },
+    },
 };
 </script>
 
 <style scoped>
-
 .main {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
     display: flex;
     flex-direction: row;
 }
@@ -61,6 +67,7 @@ export default {
     display: flex;
     flex-direction: column;
     width: 15vw;
+    height: 100vh;
     justify-content: space-evenly;
     border-right: 1px solid #323232;
 }
@@ -68,7 +75,7 @@ export default {
 .right {
     display: flex;
     flex-direction: column;
-    width: 85vw;
+    width: 84vw;
 }
 
 .playlists {
@@ -94,6 +101,7 @@ export default {
 .playlist-header {
     height: 15vh;
     width: 70%;
+    overflow: hidden;
 }
 
 .search-field {
@@ -102,12 +110,12 @@ export default {
 }
 
 .playlist-content {
-    height: 70vh;
+    height: 85vh;
+    width: 100%;
     overflow: auto;
 }
 
 .timeline {
-    height: 15vh;
 }
 
 .songitem {
@@ -163,7 +171,7 @@ export default {
 
     .sliding-side-nav {
         display: block;
-        position:fixed;
+        position: fixed;
         bottom: 0;
         width: 100%;
     }

@@ -9,6 +9,7 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 .footer-dark {
   padding:50px 1;

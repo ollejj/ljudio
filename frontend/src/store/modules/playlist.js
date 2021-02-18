@@ -5,6 +5,7 @@ const state = {
      * Each element of [playlists] will be an object similar to [selectedPlaylist] 
      */
     userid: -1,
+    currentSong: '',
     showPlaylistPopup: false,
     userPlaylistsIDs: [],
     selectedPlaylist: {
