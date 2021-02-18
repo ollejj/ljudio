@@ -3,7 +3,6 @@
         <div class="left">
             <Playlists class="playlists" user="User" />
             <NavBar class="navbar" />
-            <SlidingSideNav />
         </div>
         <div class="right">
             <div class="top">
@@ -15,6 +14,7 @@
             </div>
             <PlaylistContent class="playlist-content" />
             <Timeline class="timeline" />
+            <SlidingSideNav class="sliding-side-nav" />
         </div>
     </div>
 </template>
@@ -73,6 +73,10 @@ export default {
     height: 10vh;
 }
 
+.sliding-side-nav {
+    display: block;
+}
+
 .top {
     display: flex;
     flex-direction: row;
@@ -114,7 +118,7 @@ export default {
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 600px) {
     .left {
         display: none;
     }
@@ -147,6 +151,13 @@ export default {
         bottom: 0;
         width: 100%;
         background-color: #ffffff;
+    }
+
+    .sliding-side-nav {
+        display: block;
+        position:fixed;
+        bottom: 0;
+        width: 100%;
     }
 }
 </style>

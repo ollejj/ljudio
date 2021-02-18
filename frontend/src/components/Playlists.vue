@@ -61,7 +61,7 @@ export default {
             this.userid = data.id;
         });
 
-        let playlists = await fetch("/api/userplaylist/" + this.userid);
+        let playlists = await fetch("/api/userplaylist/" + this.userId);
         console.log(playlists);
         playlists
             .json()
@@ -106,4 +106,20 @@ span {
     align-items: center;
     justify-content: space-between;
 }
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: small;
+        margin: 1vw;
+    }
+
+    span {
+        display: flex;
+        font-size: x-small;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
 </style>

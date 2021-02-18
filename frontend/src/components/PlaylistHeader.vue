@@ -26,8 +26,4 @@ export default {
 div {
     padding: 1vw;
 }
-
-h1 {
-    font-size:xx-large;
-}
 </style>
