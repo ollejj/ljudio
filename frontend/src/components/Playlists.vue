@@ -9,6 +9,7 @@
             :key="index"
             v-on:click="sendSongsToStore(index)"
             :listName="index['playlistname']"
+            :listID="index['playlistid']"
         />
     </div>
 </template>
@@ -25,7 +26,6 @@ export default {
         return {
             playlist: String,
             arrPlaylist: [],
-            playlistIDs: [],
             userid: -1,
         };
     },
@@ -54,49 +54,54 @@ export default {
         },
     },
     async created() {
+        this.$store.state.playlists.userPlaylistsIDs = [];
+
         let userid = await fetch("/api/login", {
             method: "GET",
         });
         await userid.json().then((data) => {
             this.userid = data.id;
+            this.$store.state.playlists.userid = data.id;
         });
 
         let playlists = await fetch("/api/userplaylist/" + this.userid);
-        console.log(playlists);
         playlists
             .json()
             .then((data) => {
                 data.forEach((playlist) => {
-                    this.playlistIDs.push(playlist.playlistid);
+                    this.$store.state.playlists.userPlaylistsIDs.push( playlist );
+                    this.arrPlaylist.push(playlist);
                 });
             })
-            .then(() => {
+            /*.then(() => {
                 this.playlistIDs.forEach(async (id) => {
                     let playlistDetails = await fetch(
                         "/api/playlistsongs/" + id
                     );
                     playlistDetails.json().then((data) => {
                         if (data.length == 0) {
-                            console.log("if");
                             this.arrPlaylist.push({
                                 playlistname: "new playlist",
                                 playlistid: id,
                             });
                         } else {
-                            console.log("el");
                             data.forEach((list) => {
                                 this.arrPlaylist.push(list);
                             });
                         }
                     });
                 });
-            });
+            });*/
     },
 };
 </script>
 
 <style scoped>
 h1 {
+    margin: 1vw;
+}
+
+input {
     margin: 1vw;
 }
 
