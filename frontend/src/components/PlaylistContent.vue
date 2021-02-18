@@ -8,6 +8,7 @@
             :songDuration="millisToMinutesAndSeconds(song.duration)"
             :id="song.id"
             :playlistid="getPlaylist.id"
+            :songAlbum="song.album"
         />
     </div>
 </template>
@@ -29,8 +30,8 @@ export default {
     },
     computed: {
         getPlaylist() {
-            console.log(this.$store.state.playlists.selectedPlaylist);
-            return this.$store.state.playlists.selectedPlaylist;
+            let idCheck = this.$store.state.playlists.selectedPlaylist.songs[0].id;
+            return (idCheck != undefined) ? this.$store.state.playlists.selectedPlaylist : {};
         },
     },
 };

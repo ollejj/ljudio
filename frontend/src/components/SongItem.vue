@@ -4,23 +4,33 @@
         <span>{{ songArtist }}</span>
         <span>{{ songDuration }}</span>
         <span v-if:="playlistid == -1">
-            <input type="button" value="+" v-on:click="addSongToPlaylist">
+            <input type="button" value="+" v-on:click="dropDownPlaylists" />
         </span>
         <span v-else:="playlistid != -1">
-            <input type="button" value="-" v-on:click="removeSongToPlaylist">
+            <input type="button" value="-" v-on:click="removeSongToPlaylist" />
         </span>
     </div>
 </template>
 
 <script>
+
 export default {
     name: "SongItem",
+    components: {
+    },
     props: {
         songName: String,
         songArtist: String,
         songDuration: String,
         id: String,
-        playlistid: String
+        playlistid: String,
+        songAlbum: String,
+    },
+    data() {
+        return {
+        };
+    },
+    computed: {
     },
     methods: {
         playSong(id) {
@@ -30,12 +40,16 @@ export default {
             console.log(id);
             window.location.href = `https://www.youtube.com/watch?v=${id}`;
         },
-        addSongToPlaylist() {
-
+        addSongToPlaylist(id) {
+            let songObject = {
+                songid: this.id,
+                artist: this.songArtist,
+                title: this.songName,
+                album: this.songAlbum,
+                length: this.songDuration,
+            };
         },
-        removeSongToPlaylist() {
-
-        }
+        removeSongToPlaylist() {},
     },
 };
 </script>
@@ -67,17 +81,16 @@ span {
     text-overflow: ellipsis;
     width: 100%;
     height: 100%;
-    padding: .5vw;
+    padding: 0.5vw;
 }
 
 @media screen and (max-width: 1024px) {
 }
 
 @media screen and (max-width: 375px) {
-
     span {
         display: flex;
-        font-size: .8rem;
+        font-size: 0.8rem;
     }
 }
 </style>

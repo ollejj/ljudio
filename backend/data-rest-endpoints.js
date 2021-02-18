@@ -57,6 +57,18 @@ module.exports = (app, db) => {
         response.json(data)
     })
 
+    // Add playlist
+    app.post('/api/addplaylist/:id', async (request, response) => {
+        let data = await db.query('INSERT INTO userplaylist (userid) VALUES ( ? )', request.params.id)
+        response.json(data)
+    })
+
+    // Change playlist name
+    app.post('/api/changeplaylistname/:id/:newname', async (request, response) => {
+        let data = await db.query('UPDATE playlist SET playlistname =  WHERE ', request.params.id)
+        response.json(data)
+    })
+
     // Get all song from specific playlist.
     app.get('/api/playlistsongs/:id', async (request, response) => {
         let data = await db.query('SELECT DISTINCT playlistid, playlistname FROM playlist WHERE playlistid = ?', request.params.id)

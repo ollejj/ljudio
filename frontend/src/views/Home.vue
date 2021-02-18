@@ -2,7 +2,7 @@
     <div class="main">
         <div class="left">
             <Playlists class="playlists" user="User" />
-            <NavBar clasS="navbar" />
+            <NavBar class="navbar" />
         </div>
         <div class="right">
             <div class="top">
@@ -14,6 +14,7 @@
             </div>
             <PlaylistContent class="playlist-content" />
             <Timeline class="timeline" />
+            <SlidingSideNav class="sliding-side-nav" />
         </div>
     </div>
 </template>
@@ -25,6 +26,7 @@ import PlaylistContent from "../components/PlaylistContent.vue";
 import Timeline from "../components/Timeline.vue";
 import SearchField from "../components/SearchField.vue";
 import NavBar from "../components/NavBar.vue";
+import SlidingSideNav from "../components/SlidingSideNav.vue";
 
 export default {
     name: "App",
@@ -35,11 +37,21 @@ export default {
         Timeline,
         SearchField,
         NavBar,
+        SlidingSideNav
     },
+    computed: {
+        checkPopupState() {
+            return this.$store.state.playlists.showPlaylistPopup
+        },
+        getPlaylists() {
+            return this.$store.state.playlists.userPlaylistsIDs;
+        }
+    }
 };
 </script>
 
 <style scoped>
+
 .main {
     display: flex;
     flex-direction: row;
@@ -62,15 +74,21 @@ export default {
 .playlists {
     height: 90vh;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 .navbar {
     height: 10vh;
 }
 
+.sliding-side-nav {
+    display: block;
+}
+
 .top {
     display: flex;
     flex-direction: row;
+    border-bottom: 1px solid #323232;
 }
 
 .playlist-header {
@@ -108,7 +126,7 @@ export default {
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 600px) {
     .left {
         display: none;
     }
@@ -141,6 +159,13 @@ export default {
         bottom: 0;
         width: 100%;
         background-color: #ffffff;
+    }
+
+    .sliding-side-nav {
+        display: block;
+        position:fixed;
+        bottom: 0;
+        width: 100%;
     }
 }
 </style>

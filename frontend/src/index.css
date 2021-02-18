@@ -43,3 +43,8 @@
 .footer-dark ul a:hover {
   opacity:0.8;
 }
+
+.sidenav-overlay {
+  height: 0px;
+  width: 0px;
+}
