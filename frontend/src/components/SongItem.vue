@@ -13,12 +13,10 @@
 </template>
 
 <script>
-import Popup from './PlaylistPopup.vue';
 
 export default {
     name: "SongItem",
     components: {
-        Popup
     },
     props: {
         songName: String,
@@ -36,11 +34,7 @@ export default {
     },
     methods: {
         playSong(id) {
-            //Use Youtube API to play song
-            //The prop 'id' will serve as a pointer to the video/song id on youtube
-            //example:
-            console.log(id);
-            window.location.href = `https://www.youtube.com/watch?v=${id}`;
+            this.$store.state.playlists.currentSong = id;
         },
         addSongToPlaylist(id) {
             let songObject = {

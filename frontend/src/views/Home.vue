@@ -1,20 +1,22 @@
 <template>
     <div class="main">
-        <div class="left">
-            <Playlists class="playlists" user="User" />
-            <NavBar clasS="navbar" />
-        </div>
-        <div class="right">
-            <div class="top">
-                <PlaylistHeader
-                    class="playlist-header"
-                    playlistName="My Playlist"
-                />
-                <SearchField class="search-field" />
+        <div class="row">
+            <div class="left">
+                <Playlists class="playlists" user="User" />
+                <NavBar clasS="navbar" />
             </div>
-            <PlaylistContent class="playlist-content" />
-            <Timeline class="timeline" />
+            <div class="right">
+                <div class="top">
+                    <PlaylistHeader
+                        class="playlist-header"
+                        playlistName="My Playlist"
+                    />
+                    <SearchField class="search-field" />
+                </div>
+                <PlaylistContent class="playlist-content" />
+            </div>
         </div>
+        <Timeline class="timeline" />
     </div>
 </template>
 
@@ -51,6 +53,11 @@ export default {
 
 .main {
     display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
     flex-direction: row;
 }
 
@@ -58,6 +65,7 @@ export default {
     display: flex;
     flex-direction: column;
     width: 15vw;
+    height: 100vh;
     justify-content: space-evenly;
     border-right: 1px solid #323232;
 }
@@ -95,12 +103,12 @@ export default {
 }
 
 .playlist-content {
-    height: 70vh;
+    height: 85vh;
+    width: 100%;
     overflow: auto;
 }
 
 .timeline {
-    height: 15vh;
 }
 
 .songitem {
