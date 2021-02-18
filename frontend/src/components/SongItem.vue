@@ -13,12 +13,10 @@
 </template>
 
 <script>
-import Popup from './PlaylistPopup.vue';
 
 export default {
     name: "SongItem",
     components: {
-        Popup
     },
     props: {
         songName: String,
