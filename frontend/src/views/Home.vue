@@ -39,6 +39,14 @@ export default {
         NavBar,
         SlidingSideNav
     },
+    computed: {
+        checkPopupState() {
+            return this.$store.state.playlists.showPlaylistPopup
+        },
+        getPlaylists() {
+            return this.$store.state.playlists.userPlaylistsIDs;
+        }
+    }
 };
 </script>
 

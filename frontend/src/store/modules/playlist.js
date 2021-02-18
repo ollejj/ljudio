@@ -4,7 +4,9 @@ const state = {
     /*
      * Each element of [playlists] will be an object similar to [selectedPlaylist] 
      */
-
+    userid: -1,
+    showPlaylistPopup: false,
+    userPlaylistsIDs: [],
     selectedPlaylist: {
         songs: [],
         name: "",

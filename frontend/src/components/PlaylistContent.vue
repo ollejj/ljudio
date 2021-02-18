@@ -8,6 +8,7 @@
             :songDuration="millisToMinutesAndSeconds(song.duration)"
             :id="song.id"
             :playlistid="getPlaylist.id"
+            :songAlbum="song.album"
         />
     </div>
 </template>
