@@ -2,7 +2,8 @@
     <div class="main">
         <div class="left">
             <Playlists class="playlists" user="User" />
-            <NavBar clasS="navbar" />
+            <NavBar class="navbar" />
+            <!--<SlidingSideNav />-->
         </div>
         <div class="right">
             <div class="top">
@@ -25,6 +26,7 @@ import PlaylistContent from "../components/PlaylistContent.vue";
 import Timeline from "../components/Timeline.vue";
 import SearchField from "../components/SearchField.vue";
 import NavBar from "../components/NavBar.vue";
+import SlidingSideNav from "../components/SlidingSideNav.vue";
 
 export default {
     name: "App",
@@ -35,6 +37,7 @@ export default {
         Timeline,
         SearchField,
         NavBar,
+        SlidingSideNav
     },
 };
 </script>
