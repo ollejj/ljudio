@@ -9,3 +9,8 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.sidenav-overlay {
+  height: 0px;
+  width: 0px;
+}
