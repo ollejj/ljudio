@@ -1,7 +1,7 @@
 <template>
-    <div v-on:click="openList(id)">
+    <div>
         <p>{{ listName }}</p>
-        <input type="button" value="edit">
+        <input type="button" value="edit" v-on:click="editPlaylistName">
     </div>
 </template>
 
@@ -11,12 +11,18 @@ export default {
     props: {
         listName: String,
         id: String,
+        listID: Number
     },
     methods: {
-        openList(id) {
-            //do stuff
-        },
+        editPlaylistName() {
+            let newName = prompt(`What do you want to change '${this.listName}' to?`);
+
+            alert(this.listID);
+        }
     },
+    created() {
+        console.log('created');
+    }
 };
 </script>
 
@@ -24,12 +30,14 @@ export default {
 div {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 5vh;
     border-bottom: 1px solid #00000022;
+    padding-left: .5vw;
+    padding-right: .5vw;
 
-    /*Disable the user to select text on the Song Items*/
+    /*Disable the user to select text on the Playlist Items*/
     user-select: none; /*Currently supported by Chrome, Edge, Opera and Firefox*/
 }
 
@@ -40,7 +48,6 @@ div:hover {
 
 p {
     font-size: 1.3rem;
-    text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
