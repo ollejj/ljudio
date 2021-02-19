@@ -23,7 +23,6 @@ export default {
     methods: {},
     computed: {
         getID() {
-            console.log(this.$store.state.playlists.currentSong);
             return this.$store.state.playlists.currentSong;
         },
     },

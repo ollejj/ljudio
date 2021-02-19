@@ -5,7 +5,7 @@
             :key="i"
             :songName="song.title"
             :songArtist="song.artist"
-            :songDuration="millisToMinutesAndSeconds(song.duration)"
+            :songDuration="song.duration"
             :id="song.id"
             :playlistid="getPlaylist.id"
             :songAlbum="song.album"
@@ -22,11 +22,7 @@ export default {
         SongItem,
     },
     methods: {
-        millisToMinutesAndSeconds(millis) {
-            var minutes = Math.floor(millis / 60000);
-            var seconds = ((millis % 60000) / 1000).toFixed(0);
-            return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-        },
+        
     },
     computed: {
         getPlaylist() {

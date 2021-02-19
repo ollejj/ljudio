@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>{{ listName }}</p>
-        <input type="button" value="edit" v-on:click="editPlaylistName">
+        <input v-if="!getPopupState" type="button" value="edit" v-on:click="editPlaylistName">
     </div>
 </template>
 
@@ -16,12 +16,13 @@ export default {
     methods: {
         editPlaylistName() {
             let newName = prompt(`What do you want to change '${this.listName}' to?`);
-
-            alert(this.listID);
+        },
+        getPopupState() {
+            return this.$store.state.playlists.showPlaylistPopup;
         }
     },
     created() {
-        console.log('created');
+
     }
 };
 </script>
