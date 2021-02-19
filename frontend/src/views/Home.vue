@@ -1,24 +1,21 @@
 <template>
-    <div class="main">
-        <div id="row">
-            <div class="left">
-                <Playlists class="playlists" user="User" />
-                <NavBar class="navbar" />
-            </div>
-            <div class="right">
-                <div class="top">
-                    <PlaylistHeader
-                        class="playlist-header"
-                        playlistName="My Playlist"
-                    />
-                    <SearchField class="search-field" />
-                </div>
-                <PlaylistContent class="playlist-content" />
-                <SlidingSideNav class="sliding-side-nav" />
-            </div>
+  <div class="main">
+    <div id="row">
+      <div class="left">
+        <Playlists class="playlists" user="User" />
+        <NavBar class="navbar" />
+      </div>
+      <div class="right">
+        <div class="top">
+          <PlaylistHeader class="playlist-header" playlistName="My Playlist" />
+          <SearchField class="search-field" />
         </div>
-        <Timeline class="timeline" />
+        <PlaylistContent class="playlist-content" />
+        <SlidingSideNav class="sliding-side-nav" />
+      </div>
     </div>
+    <Timeline class="timeline" />
+  </div>
 </template>
 
 <script>
@@ -31,149 +28,162 @@ import NavBar from "../components/NavBar.vue";
 import SlidingSideNav from "../components/SlidingSideNav.vue";
 
 export default {
-    name: "App",
-    components: {
-        Playlists,
-        PlaylistHeader,
-        PlaylistContent,
-        Timeline,
-        SearchField,
-        NavBar,
-        SlidingSideNav,
+  name: "App",
+  components: {
+    Playlists,
+    PlaylistHeader,
+    PlaylistContent,
+    Timeline,
+    SearchField,
+    NavBar,
+    SlidingSideNav,
+  },
+  computed: {
+    checkPopupState() {
+      return this.$store.state.playlists.showPlaylistPopup;
     },
-    computed: {
-        checkPopupState() {
-            return this.$store.state.playlists.showPlaylistPopup;
-        },
-        getPlaylists() {
-            return this.$store.state.playlists.userPlaylistsIDs;
-        },
+    getPlaylists() {
+      return this.$store.state.playlists.userPlaylistsIDs;
     },
+  },
 };
 </script>
 
 <style scoped>
 .main {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .row {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .left {
-    display: flex;
-    flex-direction: column;
-    width: 15vw;
-    height: 100vh;
-    justify-content: space-evenly;
-    border-right: 1px solid #323232;
+  display: flex;
+  flex-direction: column;
+  width: 15vw;
+  height: 100vh;
+  justify-content: space-evenly;
+  border-right: 1px solid #323232;
 }
 
 .right {
-    display: flex;
-    flex-direction: column;
-    width: 84vw;
+  display: flex;
+  flex-direction: column;
+  width: 84vw;
 }
 
 .playlists {
-    height: 90vh;
-    overflow: auto;
-    overflow-x: hidden;
+  height: 90vh;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 .navbar {
-    height: 10vh;
+  height: 10vh;
 }
 
 .sliding-side-nav {
-    display: block;
+  display: block;
 }
 
 .top {
-    display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid #323232;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #323232;
 }
 
 .playlist-header {
-    height: 15vh;
-    width: 70%;
-    overflow: hidden;
+  height: 15vh;
+  width: 70%;
+  overflow: hidden;
 }
 
 .search-field {
-    height: 15vh;
-    width: 30%;
+  height: 15vh;
+  width: 30%;
 }
 
 .playlist-content {
-    height: 85vh;
-    width: 100%;
-    overflow: auto;
-}
-
-.timeline {
+  height: 85vh;
+  width: 100%;
+  overflow: auto;
 }
 
 .songitem {
-    height: 55vh;
+  height: 55vh;
+}
+
+.sliding-side-nav {
+  display: none;
 }
 
 @media screen and (max-width: 1024px) {
-    .playlist-header {
-        height: 15vh;
-        width: 50%;
-    }
+  .playlist-header {
+    height: 15vh;
+    width: 50%;
+  }
 
-    .search-field {
-        height: 15vh;
-        width: 50%;
-    }
+  .search-field {
+    height: 15vh;
+    width: 50%;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .left {
-        display: none;
-    }
+  .left {
+    display: none;
+  }
 
-    .right {
-        width: 100vw;
-    }
+  .sliding-side-nav {
+    display: inline-block;
+    position: sticky;
+    top: 1vh;
+  }
 
-    .top {
-        display: flex;
-        flex-direction: column;
-    }
+  .right {
+    width: 100vw;
+  }
 
-    .playlist-header {
-        display: flex;
-        height: 50%;
-        width: 100%;
-        align-items: center;
-    }
+  .top {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .search-field {
-        display: flex;
-        height: 15vh;
-        width: 100%;
-        align-items: flex-end;
-    }
+  .playlist-header {
+    display: flex;
+    height: 50%;
+    width: 100%;
+    align-items: center;
+  }
 
-    .timeline {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #ffffff;
-    }
+  .search-field {
+    display: flex;
+    height: 15vh;
+    width: 100%;
+    align-items: flex-end;
+  }
 
-    .sliding-side-nav {
-        display: block;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
+  .timeline {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+  }
+
+  .sliding-side-nav {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .playlist-content {
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+  }
 }
 </style>
