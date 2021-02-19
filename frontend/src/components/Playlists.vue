@@ -96,12 +96,13 @@ export default {
 </script>
 
 <style scoped>
-h1 {
+h2 {
+    font-size: 2rem;
     margin: 1vw;
 }
 
 input {
-    margin: 1vw;
+    margin-right: 1vw;
 }
 
 span {
@@ -109,6 +110,12 @@ span {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 1107px) {
+    span {
+    flex-direction: column;
+}
 }
 
 @media screen and (max-width: 600px) {
