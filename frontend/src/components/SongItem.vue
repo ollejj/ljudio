@@ -2,9 +2,9 @@
     <div v-on:dblclick="playSong(id)">
         <span>{{ songName }}</span>
         <span>{{ songArtist }}</span>
-        <span>{{ songDuration }}</span>
+        <span>{{ millisToMinutesAndSeconds(songDuration) }}</span>
         <span v-if:="playlistid == -1">
-            <input type="button" value="+" v-on:click="dropDownPlaylists" />
+            <input type="button" value="+" v-on:click="addSongToPlaylist" />
         </span>
         <span v-else:="playlistid != -1">
             <input type="button" value="-" v-on:click="removeSongToPlaylist" />
@@ -21,9 +21,9 @@ export default {
     props: {
         songName: String,
         songArtist: String,
-        songDuration: String,
+        songDuration: Number,
         id: String,
-        playlistid: String,
+        playlistid: Number,
         songAlbum: String,
     },
     data() {
@@ -36,7 +36,7 @@ export default {
         playSong(id) {
             this.$store.state.playlists.currentSong = id;
         },
-        addSongToPlaylist(id) {
+        addSongToPlaylist() {
             let songObject = {
                 songid: this.id,
                 artist: this.songArtist,
@@ -44,8 +44,16 @@ export default {
                 album: this.songAlbum,
                 length: this.songDuration,
             };
+
+            this.$store.state.playlists.pendingSongToAdd = songObject;
+            this.$store.state.playlists.showPlaylistPopup = true;
         },
         removeSongToPlaylist() {},
+        millisToMinutesAndSeconds(millis) {
+            var minutes = Math.floor(millis / 60000);
+            var seconds = ((millis % 60000) / 1000).toFixed(0);
+            return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+        }
     },
 };
 </script>

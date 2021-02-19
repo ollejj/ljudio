@@ -85,6 +85,21 @@ module.exports = (app, db) => {
         let data = await db.query('select * from playlist where playlistid = ?', request.params.id)
         response.json(data);
     })
+
+    // Add song to playlist
+    app.post("/api/playlist/:id", async (request, response) => {
+        let data = await db.query('INSERT INTO playlist (playlistid, songid, playlistname, artist, title, album, length) VALUES ( ?, ?, ?, ?, ?, ?, ? )', 
+            [request.params.id,
+            request.body.songid,
+            request.body.playlistname,
+            request.body.artist,
+            request.body.title,
+            request.body.album.name,
+            request.body.length]
+        )
+        response.json(data);
+    })
+
     // Delete song from playlist, may needs tweasking.
     app.delete("/api/playlist/:id", async (request, response) => {
         let result = await db.query("DELETE FROM playlist WHERE songid=?", request.params.id)

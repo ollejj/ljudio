@@ -10,9 +10,8 @@
           <PlaylistHeader class="playlist-header" playlistName="My Playlist" />
           <SearchField class="search-field" />
         </div>
-        <PlaylistContent class="playlist-content" />
-        <SlidingSideNav class="sliding-side-nav" />
-      </div>
+        <Timeline class="timeline" />
+        <Popup v-if="checkPopupState"/>
     </div>
     <Timeline class="timeline" />
   </div>
@@ -26,26 +25,29 @@ import Timeline from "../components/Timeline.vue";
 import SearchField from "../components/SearchField.vue";
 import NavBar from "../components/NavBar.vue";
 import SlidingSideNav from "../components/SlidingSideNav.vue";
+import Popup from "../components/Popup.vue"
 
 export default {
-  name: "App",
-  components: {
-    Playlists,
-    PlaylistHeader,
-    PlaylistContent,
-    Timeline,
-    SearchField,
-    NavBar,
-    SlidingSideNav,
-  },
-  computed: {
-    checkPopupState() {
-      return this.$store.state.playlists.showPlaylistPopup;
+    name: "App",
+    components: {
+        Playlists,
+        PlaylistHeader,
+        PlaylistContent,
+        Timeline,
+        SearchField,
+        NavBar,
+        SlidingSideNav,
+        Popup
     },
-    getPlaylists() {
-      return this.$store.state.playlists.userPlaylistsIDs;
+    computed: {
+        checkPopupState() {
+            console.log(this.$store.state.playlists.showPlaylistPopup);
+            return this.$store.state.playlists.showPlaylistPopup;
+        },
+        getPlaylists() {
+            return this.$store.state.playlists.userPlaylistsIDs;
+        },
     },
-  },
 };
 </script>
 
@@ -70,9 +72,9 @@ export default {
 }
 
 .right {
-  display: flex;
-  flex-direction: column;
-  width: 84vw;
+    display: flex;
+    flex-direction: column;
+    width: 83vw;
 }
 
 .playlists {

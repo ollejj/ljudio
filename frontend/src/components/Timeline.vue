@@ -14,20 +14,19 @@
 
 <script>
 export default {
-  components: {},
-  data() {
-    return {
-      value: 0,
-      url: "https://www.youtube.com/embed/",
-    };
-  },
-  methods: {},
-  computed: {
-    getID() {
-      console.log(this.$store.state.playlists.currentSong);
-      return this.$store.state.playlists.currentSong;
+    components: {},
+    data() {
+        return {
+            value: 0,
+            url: "https://www.youtube.com/embed/",
+        };
     },
-  },
+    methods: {},
+    computed: {
+        getID() {
+            return this.$store.state.playlists.currentSong;
+        },
+    },
 };
 </script>
 
