@@ -51,19 +51,13 @@ export default {
         async removeSongFromPlaylist() {
             let response = await fetch("/api/playlist/" + this.playlistid + "/" + this.id, {
             method: "DELETE",
-        });
-        await promise
+            });
+            await response
                 .json()
                 .then((data) => {
-                    console.log(data);
+                    console.log("Response from removeSongFromPlaylist()" + data);
                 })
                 .catch((err) => console.log(err));
-        let playlist = await fetch("/api/playlist/" + this.playlistid);
-        await promise
-            .json()
-            .then((data) => {
-                console.log(data);
-            });
         },
 
         millisToMinutesAndSeconds(millis) {
