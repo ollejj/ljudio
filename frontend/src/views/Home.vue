@@ -18,6 +18,7 @@
             </div>
         </div>
         <Timeline class="timeline" />
+        <Popup v-if="checkPopupState"/>
     </div>
 </template>
 
@@ -29,6 +30,7 @@ import Timeline from "../components/Timeline.vue";
 import SearchField from "../components/SearchField.vue";
 import NavBar from "../components/NavBar.vue";
 import SlidingSideNav from "../components/SlidingSideNav.vue";
+import Popup from "../components/Popup.vue"
 
 export default {
     name: "App",
@@ -40,9 +42,11 @@ export default {
         SearchField,
         NavBar,
         SlidingSideNav,
+        Popup
     },
     computed: {
         checkPopupState() {
+            console.log(this.$store.state.playlists.showPlaylistPopup);
             return this.$store.state.playlists.showPlaylistPopup;
         },
         getPlaylists() {
@@ -75,7 +79,7 @@ export default {
 .right {
     display: flex;
     flex-direction: column;
-    width: 84vw;
+    width: 83vw;
 }
 
 .playlists {
