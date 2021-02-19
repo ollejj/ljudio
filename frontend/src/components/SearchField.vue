@@ -1,6 +1,7 @@
 <template>
     <div>
-        <input v-on:keyup.enter="searchSong"
+        <input
+            v-on:keyup.enter="searchSong"
             v-model="inputText"
             type="text"
             placeholder="Search..."
@@ -50,13 +51,14 @@ export default {
 </script>
 
 <style scoped>
-
 div {
     padding: 1vw;
     box-sizing: border-box;
 }
 
-h1, form, button {
+h1,
+form,
+button {
     margin: 5px;
 }
 
@@ -71,12 +73,22 @@ button {
     height: 30%;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
+    input {
+        width: 100%;
+        height: 30%;
+    }
+
+    button {
+        width: 100%;
+        margin: 0;
+        height: 30%;
+    }
 }
 
-@media screen and (max-width: 375px) {
-
-    input, button {
+@media screen and (max-width: 850px) {
+    input,
+    button {
         height: 50%;
     }
 

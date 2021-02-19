@@ -18,7 +18,7 @@
             </div>
         </div>
         <Timeline class="timeline" />
-        <Popup v-if="checkPopupState"/>
+        <Popup v-if="checkPopupState" />
     </div>
 </template>
 
@@ -30,7 +30,7 @@ import Timeline from "../components/Timeline.vue";
 import SearchField from "../components/SearchField.vue";
 import NavBar from "../components/NavBar.vue";
 import SlidingSideNav from "../components/SlidingSideNav.vue";
-import Popup from "../components/Popup.vue"
+import Popup from "../components/Popup.vue";
 
 export default {
     name: "App",
@@ -42,11 +42,10 @@ export default {
         SearchField,
         NavBar,
         SlidingSideNav,
-        Popup
+        Popup,
     },
     computed: {
         checkPopupState() {
-            console.log(this.$store.state.playlists.showPlaylistPopup);
             return this.$store.state.playlists.showPlaylistPopup;
         },
         getPlaylists() {
@@ -93,7 +92,7 @@ export default {
 }
 
 .sliding-side-nav {
-    display: block;
+    display: none;
 }
 
 .top {
@@ -128,17 +127,15 @@ export default {
 
 @media screen and (max-width: 1024px) {
     .playlist-header {
-        height: 15vh;
-        width: 50%;
+        width: 70%;
     }
 
     .search-field {
-        height: 15vh;
-        width: 50%;
+        width: 30%;
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 850px) {
     .left {
         display: none;
     }
@@ -150,25 +147,27 @@ export default {
     .top {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
     }
 
     .playlist-header {
         display: flex;
         height: 50%;
-        width: 100%;
+        width: 90%;
         align-items: center;
     }
 
     .search-field {
         display: flex;
+        flex-direction: column;
         height: 15vh;
-        width: 100%;
+        width: 90%;
         align-items: flex-end;
     }
 
     .timeline {
-        position: fixed;
-        bottom: 0;
         width: 100%;
         background-color: #ffffff;
     }
@@ -176,7 +175,8 @@ export default {
     .sliding-side-nav {
         display: block;
         position: fixed;
-        bottom: 0;
+        top: 0;
+        left: 0;
         width: 100%;
     }
 }
