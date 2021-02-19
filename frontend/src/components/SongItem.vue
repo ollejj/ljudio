@@ -7,7 +7,7 @@
             <input type="button" value="+" v-on:click="addSongToPlaylist" />
         </span>
         <span v-else:="playlistid != -1">
-            <input type="button" value="-" v-on:click="removeSongToPlaylist" />
+            <input type="button" value="-" v-on:click="removeSongFromPlaylist" />
         </span>
     </div>
 </template>
@@ -48,7 +48,18 @@ export default {
             this.$store.state.playlists.pendingSongToAdd = songObject;
             this.$store.state.playlists.showPlaylistPopup = true;
         },
-        removeSongToPlaylist() {},
+        async removeSongFromPlaylist() {
+            let response = await fetch("/api/playlist/" + this.playlistid + "/" + this.id, {
+            method: "DELETE",
+            });
+            await response
+                .json()
+                .then((data) => {
+                    console.log("Response from removeSongFromPlaylist()" + data);
+                })
+                .catch((err) => console.log(err));
+        },
+
         millisToMinutesAndSeconds(millis) {
             var minutes = Math.floor(millis / 60000);
             var seconds = ((millis % 60000) / 1000).toFixed(0);
