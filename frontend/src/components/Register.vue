@@ -4,11 +4,11 @@
       <form @submit.prevent="submit">
         <div>
           <label for="email">E-mail</label>
-          <input type="text" name="email" v-model="form.email" required />
+          <input type="email" name="email" v-model="form.email" required />
         </div>
         <div>
           <label for="password">Password</label>
-          <input type="text" name="password" v-model="form.password" required />
+          <input type="password" name="password" v-model="form.password" required minlength="8" />
         </div>
         <div>
           <label for="firstName">First Name</label>
@@ -20,7 +20,7 @@
           />
         </div>
         <div>
-          <label for="lastName">E-mail</label>
+          <label for="lastName">Last Name</label>
           <input
             type="text"
             name="last_name"
