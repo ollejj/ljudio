@@ -50,7 +50,6 @@ export default {
             let response = await fetch("/api/addplaylist/" + this.userid, {
                 method: "POST",
             });
-            console.log(response);
         },
     },
     async created() {

@@ -15,7 +15,6 @@ export default {
     },
     computed: {
         getPlaylistDetails() {
-            console.log(this.$store.state.playlists.selectedPlaylist);
             return this.$store.state.playlists.selectedPlaylist;
         }
     }
