@@ -1,7 +1,7 @@
 <template>
     <div>
         <span>
-            <h1>Playlists</h1>
+            <h2>Playlists</h2>
             <input type="button" value="+" v-on:click="addPlaylist" />
         </span>
         <PlaylistItem

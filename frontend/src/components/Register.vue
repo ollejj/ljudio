@@ -20,7 +20,7 @@
           />
         </div>
         <div>
-          <label for="lastName">E-mail</label>
+          <label for="lastName">Last Name</label>
           <input
             type="text"
             name="last_name"

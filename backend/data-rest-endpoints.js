@@ -64,8 +64,8 @@ module.exports = (app, db) => {
     })
 
     // Change playlist name
-    app.post('/api/changeplaylistname/:id/:newname', async (request, response) => {
-        let data = await db.query('UPDATE playlist SET playlistname =  WHERE ', request.params.id)
+    app.post('/api/changeplaylistname/:id/:playlistid/:newname', async (request, response) => {
+        let data = await db.query('UPDATE userplaylist SET playlistname = ? WHERE playlistid =?', [request.params.newname, request.params.playlistid, request.params.id])
         response.json(data)
     })
 
@@ -90,7 +90,7 @@ module.exports = (app, db) => {
         let result = await db.query("DELETE FROM playlist WHERE songid=?", request.params.id)
         response.json(result)
     })
-
+ 
 
 
 
