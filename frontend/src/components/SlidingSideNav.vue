@@ -3,7 +3,7 @@
         <ul id="slide-out" class="sidenav">
             <li><div class="user-view"></div></li>
             <!--<li><a href="#!"><i class="material-icons">cloud</i>Search field</a></li>-->
-            <li>
+            <li class="main">
                 <div class="waves-effect">
                     <Playlists class="playlists" user="User" />
                 </div>
@@ -38,6 +38,10 @@ export default {
 <style scoped>
 #textcolor {
     color: black;
+}
+
+.main {
+  height: 80%;
 }
 
 .waves-effect {
