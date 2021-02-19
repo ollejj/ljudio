@@ -45,7 +45,23 @@ export default {
                 length: this.songDuration,
             };
         },
-        removeSongToPlaylist() {},
+        async removeSongToPlaylist() {
+            let response = await fetch("/api/playlist/" + this.playlistid + "/" + this.id, {
+            method: "DELETE",
+        });
+        await promise
+                .json()
+                .then((data) => {
+                    console.log(data);
+                })
+                .catch((err) => console.log(err));
+        let playlist = await fetch("/api/playlist/" + this.playlistid);
+        await promise
+            .json()
+            .then((data) => {
+                console.log(data);
+            });
+        },
     },
 };
 </script>

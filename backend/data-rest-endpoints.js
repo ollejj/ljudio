@@ -86,9 +86,9 @@ module.exports = (app, db) => {
         response.json(data);
     })
     // Delete song from playlist, may needs tweasking.
-    app.delete("/api/playlist/:id", async (request, response) => {
-        let result = await db.query("DELETE FROM playlist WHERE songid=?", request.params.id)
-        response.json(result)
+    app.delete("/api/playlist/:id/:songid", async (request, response) => {
+        let result = await db.query("DELETE FROM playlist WHERE songid=? AND playlistid=?", [request.params.songid, request.params.id])
+        response.json(result);
     })
  
 
