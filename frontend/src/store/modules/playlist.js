@@ -31,7 +31,7 @@ const mutations = {
             name: data[0].playlistname,
             id: ""
         };
-        console.log(data[0].playlistname);
+        console.log(data);
         data.forEach((song) => {
             //state.selectedPlaylist.name = song.playlistname;
             state.selectedPlaylist.id = song.playlistid || '-1';
@@ -43,7 +43,7 @@ const mutations = {
                 artist: song.artist
             })
         });
-        
+
 
         console.log(state.selectedPlaylist);
     },

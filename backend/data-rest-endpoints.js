@@ -65,6 +65,7 @@ module.exports = (app, db) => {
 
     // Change playlist name
     app.post('/api/changeplaylistname/:id/:playlistid/:newname', async (request, response) => {
+     
         let data = await db.query('UPDATE userplaylist SET playlistname = ? WHERE playlistid =?', [request.params.newname, request.params.playlistid, request.params.id])
         response.json(data)
     })
@@ -88,7 +89,7 @@ module.exports = (app, db) => {
 
     // Add song to playlist
     app.post("/api/playlist/:id", async (request, response) => {
-        let data = await db.query('INSERT INTO playlist (playlistid, songid, playlistname, artist, title, album, length) VALUES ( ?, ?, ?, ?, ?, ?, ? )', 
+        let data = await db.query('INSERT INTO playlist (playlistid, songid, playlistname, artist, title, album, length) VALUES ( ?, ?, ?, ?, ?, ?, ? )',
             [request.params.id,
             request.body.songid,
             request.body.playlistname,
@@ -105,7 +106,7 @@ module.exports = (app, db) => {
         let result = await db.query("DELETE FROM playlist WHERE playlistid=? AND songid=?", [request.params.songid, request.params.id])
         response.json(result);
     })
- 
+
 
 
 
